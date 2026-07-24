@@ -198,7 +198,28 @@
       "fileType": "application/zip",
       "fileUrl": "./data/files/aireach-bpg2/AiReach.zip",
       "updatedAt": "2026-07-24"
+    },
+    {
+      "id": "okk-i81a",
+      "name": "主管-OKK客户资产（检查是否打标签）",
+      "description": "一键给公司 OKKI(小满) CRM 里的客户资产做全面体检——抓出没打分类标签的\"裸奔客户\"、多维度盘点客户结构、诊断客户资产健康度并给出管理建议。适用于外贸公司管理者对业务员领客户后不打理、客户资产沉睡、结构失衡等场景的定期盘查。\n",
+      "type": "SKILL",
+      "category": "OKKI",
+      "role": "业务主管",
+      "audience": "对客赋能",
+      "tags": [],
+      "author": "陶磊",
+      "version": "v1.0",
+      "cert": "none",
+      "likes": 0,
+      "downloads": 0,
+      "createdAt": "2026-07-24",
+      "content": "## 核心功能\n1. **裸奔客户抓取**：找出\"该打标签但没打\"的沉睡客户，精确定位到业务员归属。\n2. **多维度结构盘点**：国家/来源/阶段/等级/业务员 5 维交叉统计，直观呈现客户资产画像。\n3. **业务员责任榜**：按裸奔率排名，自动分档（严重/偏高/正常/优秀/标杆），揪出问题业务员。\n4. **诊断式分析**：不是罗列数据，而是给出 3 条\"结构风险 / 渠道亮点 / 人员问题\"结论。\n5. **反问式收尾**：出报告后主动给出 5 个后续动作选项让管理者决策。",
+      "fileName": "主管-OKK客户资产（检查是否打标签）.zip",
+      "fileSize": 14042,
+      "fileType": "application/zip",
+      "fileUrl": "./data/files/okk-i81a/OKK().zip"
     }
   ],
-  "updatedAt": "2026-07-24T15:24:27.413Z"
+  "updatedAt": "2026-07-24T15:29:12.464Z"
 }
