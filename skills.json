@@ -154,31 +154,6 @@
       "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/icbu-9300/ICBU.md"
     },
     {
-      "id": "国际站智能发品-70ee",
-      "name": "国际站智能发品",
-      "description": "属性锚定三源交叉 + 价格三角定位,一键上架方案",
-      "type": "SKILL",
-      "category": "智能发品",
-      "role": "客户经理",
-      "audience": "对客赋能",
-      "tags": [
-        "发品",
-        "上架",
-        "ICBU"
-      ],
-      "author": "Bao juan Tang",
-      "version": "v1.0",
-      "cert": "cert-official",
-      "likes": 21,
-      "downloads": 205,
-      "createdAt": "2026-06-22",
-      "content": "> 📄 Markdown 文档 · 打开后可直接查看完整说明\n\n---\n\n---\nname: 国际站智能发品\nversion: 3.4.0\ndescription: |\n  支持 URL 发品、素材包发品和草稿发品三种模式，将商品发布到 Alibaba.com 国际站。\n  覆盖素材解析、发布前预检、批量发布和基于轮询机制的异步任务状态追踪；不处理商品字段编辑、卖点优化或市场分析。\nenabled: true\n\ntriggers:\n  - URL 发品\n  - 链接发品\n  - 素材包发品\n  - 国际站发布商品\n  - 批量发品\n  - 草稿发布\n  - 草稿商品上线\n  - 发品进度查询\n\nexamples:\n  - 基于这个 1688 链接帮我发布到国际站\n  - 用附件里的图片和 Excel 帮我发品\n  - 把这个草稿商品上线\n  - 查询一下刚才发品任务的结果\n\nexcludes:\n  - skill: alibaba-product-information-optimization\n    when: 用户要修改、编辑或优化已存在商品/草稿商品的标题、价格、卖点、图片、属性等字段\n  - skill: alibaba-hot-product-insight\n    when: 用户要分析热销原因、爆品趋势、热卖特征或市场榜单\n  - skill: alibaba-blue-ocean-finder\n    when: 用户要基于供需错配、低竞争或差异化机会决定发布什么商品\n\nworkflow: |\n  1. 识别入参类型（URL、素材文件或草稿商品）\n  2. 根据入参类型，一次性创建完整 DAG（task_create 全部 → task_update addBlockedBy 串依赖）\n  3. 按 DAG 顺序推进：task_update(in_progress) → 执行 → task_update(completed) → 下一个\n  4. URL 发品 DAG：url_validate → precheck → start → poll → present\n  5. 素材包发品 DAG：plan_select → [url_fetch?] → [image_edit?] → parse_collect → parse_analyze → [auto_merge?] → confirm → [merge?] → publish → poll → present\n  6. 草稿发品 DAG：draft_input → publish_draft → present\n\nrenderers:\n  icbu-publish-preview-render:\n    description: icbu-publish-preview 富文本渲染页面\n    url: https://air.alibaba.com/app/bc/aw-product-publish-preview/index.html\n\ntool_triggers:\n  - tool: bash\n    args:\n      command: '/workctl\\s+icbu\\s+product\\s+(?:material-extract|material-analysis|list-material-analysis-result|material-collect|publish|precheck-url-product-generate|start-url-product-generate|list-task-list|publish-draft)\\b/i'\n---\n\n# ICBU 国际站智能发品\n\n> **⚠️ 最高优先级指令（必须无条件遵守）：**\n> 本 skill 每次被唤醒/触发时，无论通过何种路径唤醒（包括 tool_triggers 拦截），**第一个动作必须是执行下方「判断规则」**，根据用户输入内容判断发品模式。\n> - 能判断 → 直接进入对应链路的第一步\n> - 不能判断 → 输出固定引导文案，等待用户选择\n>\n> **禁止跳过判断规则直接调用任何 workctl 工具。禁止从链路中间步骤开始执行。**\n>\n> **内置渲染协议执行规则：**\n> 素材包发品链路需要商品预览时，必须读取并遵循当前 skill 内置的 `reference/icbu-publish-preview/protocol.md`，按其协议构造 `SkillPayload`，并运行 `reference/icbu-publish-preview/scripts/render.ts` 生成 slot。该预览能力已作为当前 skill 的 renderer 暴露，最终必须返回 `slot.skillId = \"国际站智能发品\"`、`slot.renderer = \"icbu-publish-preview-render\"`。宿主通过拦截 `bun run render.ts` 的 stdout 输出获取 slot 元数据，并在工具结果末尾追加渲染指令（含 `:::slot[<id>]` 标记）。脚本成功执行后（退出码 0），本轮 assistant 回复**必须**先按工具结果中宿主追加的指令逐字输出 `:::slot[<id>]` 标记（独占一行，id 从指令中原样复制），再紧跟输出「渲染后引导话术」（发品总结 1-2 句 + 固定操作引导模板，详见 protocol.md），输出后立即结束本轮。禁止在 Bash 命令中追加 `>/dev/null`、`2>&1`、`> file`、`| cat`、`| tee` 或任何 stdout 重定向/管道；禁止追加 `--output-file` 参数。禁止引用或转述 stdout 原始 JSON 内容；禁止手动构造 slot JSON、slot 摘要或自拟 id 的占位串（id 只能从宿主指令中复制）；禁止再输出引导话术之外的自然语言、成功说明、解析摘要或确认提示。禁止把 `success`、`data`、错误格式的 slot 占位串、代码块、Markdown 表格、HTML/网页截图式预览、文本说明、链接、图片、Markdown 图片或 `#image:` 作为普通文本展示给用户。如果脚本执行失败（非零退出码），应说明失败原因，禁止降级输出 slot 文本或图文说明。禁止依赖同级目录中已安装的外部 skill。脚本成功执行后必须等待用户在下一轮明确确认，禁止在同一轮或未确认状态下进入 `publish` / `poll` / `present`。\n>\n> **tool_triggers 激活场景的特殊指令：**\n> 当本 skill 通过 `tool_triggers`（即拦截 workctl 工具调用）被激活时：\n> 1. **立即丢弃**被拦截的那次工具调用，不得继续执行它\n> 2. **忽略**所有从 memory 文件、缓存文件、历史会话中读取的上下文数据（包括但不限于 `memory/queries.json`、`TASK_HISTORY.json` 中与发品相关的历史记录）\n> 3. **仅以用户当前消息内容**作为输入，从「判断规则」开始执行\n> 4. 如果用户当前消息中无法判断发品模式，输出引导文案等待用户选择\n\n在 Alibaba.com 国际站（ICBU）发布商品，支持 **URL 发品**、**素材包发品** 和 **草稿发品** 三种模式。\n\n## 入参识别与链路路由\n\n根据用户输入内容识别发品模式，路由到对应的子技能，与唤醒路径无关：\n\n### 判断规则\n\n1. **URL 发品** — 满足以下任一条件：\n   - 用户输入中包含 `1688.com`、`taobao.com`、`tmall.com`、`aliexpress.com`、`amazon.com` 域名的链接\n   - 用户明确表示使用 URL/链接发品（如\"用链接发品\"、\"URL 发品\"）\n   - → 读取 [reference/url-publish.md](reference/url-publish.md)，按 DAG 结构创建任务并执行\n\n2. **素材包发品** — 满足以下任一条件：\n   - 用户上传了素材文件（图片、ZIP 包、Excel、Word、PowerPoint、Markdown、PDF 等）\n   - 用户明确表示使用素材包发品（如\"素材包发品\"、\"上传文件发品\"、\"解析素材\"）\n   - → 读取 [reference/material-publish.md](reference/material-publish.md)，按 DAG 结构创建任务并执行\n\n3. **草稿发品** — 满足以下任一条件：\n   - 用户明确提及\"发布草稿\"、\"草稿发布\"、\"将草稿商品上线\"、\"草稿态商品发布\"、\"草稿上线\"\n   - 用户表示商品已在草稿箱中，需要发布到线上\n   - → 读取 [reference/draft-publish.md](reference/draft-publish.md)，按 DAG 结构创建任务并执行\n\n4. **无法判断** — 若无法通过用户输入判断发品方式（既不包含 URL、也未上传文件、也未明确表达发品模式），**必须**输出以下固定引导文案，等待用户明确选择后再进入对应链路。**禁止自行推断、禁止跳过引导直接执行。**\n\n   > 我是 ICBU 国际站智能发品助手，可以帮您将商品发布到 Alibaba.com 国际站。请选择您的发品方式：\n   > 1. **URL 发品** — 提供商品链接（支持 1688、淘宝、天猫、AliExpress、Amazon），我将自动抓取商品信息并发布\n   > 2. **素材包发品** — 上传素材文件（图片、ZIP、Excel、Word 等），我将解析素材内容并发布\n   > 3. **草稿发品** — 将已保存的草稿态商品发布到线上\n\n## Task-Based Execution Protocol（任务执行协议）\n\n路由判断完成后，按以下协议执行发品流程。本 skill 的所有工作流均通过 **DAG（有向无环图）任务系统**驱动；plan 仍以 session 内存对象为权威（用于 `mode` / `category_key` / `delegate` / `subtasks` 等任务系统不承载的字段），task 系统承载所有 step 的持久化状态、依赖关系与用户可见的任务面板渲染。**禁止跳过本协议直接调用 workctl 工具。**\n\n### Step 1: Plan — 一次性创建完整 DAG（2-pass init）\n\n根据判断规则确定的发品模式，读取对应的 reference 文档，找到 DAG 结构定义；条件性 step（预处理 / `auto_merge`）按 reference 文档「DAG 规划判定」章节的判定规则决定是否纳入。本平台 task API（旧版本）**不支持在 `task_create` 时内联声明 `blockedBy`**，因此 plan 必须用 **2-pass** 模式初始化：\n\n1. **Pass 1（并行 task_create）**：在一个 response 中并行调用所有 `task_create`，按 plan.steps 顺序逐个创建；不传依赖字段。记录每次返回的 `task.id`（即 task 系统的字符串数字 id）回写到 `plan.steps[i].taskId`。\n2. **Pass 2（并行 task_update 串依赖）**：在下一个 response 中并行调用 `task_update`，对每个 step 用 `addBlockedBy: [<上一个 step.taskId>]` 串起线性依赖；分支或条件 step 的依赖另行处理（详见 reference 文档）。\n3. **Pass 3（\n\n---\n\n**(内容较长,已截取前 5000 字符 · 完整版请下载文件查看)**",
-      "fileName": "alibaba-product-publish.md",
-      "fileSize": 11896,
-      "fileType": "text/markdown",
-      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/70ee/alibaba-product-publish.md"
-    },
-    {
       "id": "aireach-bpg2",
       "name": "业务-AiReach跟进助手",
       "description": "一键把 AiReach 挖到的新客户\"领出来 → 查一遍官网 → 写好开发信 → 整理成 Excel\"的跟进助手。它会自动去 OKKI 后台领取最新交付的客户,潜入对方官网找\"钩子\",然后用极具\"人味儿\"的语气(拒绝 AI 模板腔)写出高度个性化的开发信,并整理成 Excel 表格交给你或助理直接发送。支持多语言(法/西/英),自动对已领过的客户去重防重复。\n",
@@ -264,5 +239,5 @@
       "fileUrl": "./data/files/okki-pro-xhtl/OKKI-Pro.zip"
     }
   ],
-  "updatedAt": "2026-07-24T15:41:12.640Z"
+  "updatedAt": "2026-07-24T15:41:21.991Z"
 }
