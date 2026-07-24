@@ -2,11 +2,11 @@
   "skills": [
     {
       "id": "汤-交通锥详情制作-8b34",
-      "name": "汤 交通锥详情制作",
+      "name": "交通锥详情制作",
       "description": "4图极简 + 1200px + 大宗师 5 步 + AIDA,覆盖 10 大道路交通安全后市场品类",
       "type": "SKILL",
       "category": "详情制作(4图)",
-      "role": "客户经理",
+      "role": "运营",
       "audience": "对客赋能",
       "tags": [
         "交通锥",
@@ -23,7 +23,8 @@
       "fileName": "汤-交通锥详情制作_技能包_20260722_1420.zip",
       "fileSize": 7215,
       "fileType": "application/octet-stream",
-      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/8b34/__20260722_1420.zip"
+      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/8b34/__20260722_1420.zip",
+      "updatedAt": "2026-07-24"
     },
     {
       "id": "汤-季度总结全案-a362",
@@ -202,5 +203,5 @@
       "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/76e4/B2B.md"
     }
   ],
-  "updatedAt": "2026-07-24T08:56:33.042Z"
+  "updatedAt": "2026-07-24T14:24:07.465Z"
 }
