@@ -220,7 +220,28 @@
       "fileSize": 14042,
       "fileType": "application/zip",
       "fileUrl": "./data/files/okk-i81a/OKK().zip"
+    },
+    {
+      "id": "okki-t31b",
+      "name": " 主管-OKKI员工谈单周期质检",
+      "description": "外贸公司管理者的\"员工管理军师\"三合一。装完先反问老板\"想干嘛\":①个人诊断+谈话稿(甩一个业务员进来,自动从 OKKI 抓客户/商机/订单三块数据做画像,给谈话方向和可念的谈话稿) ②周会话题生成(每周一自动跑,给出本周必谈的 3 大亮点+3 大风险+主持稿) ③季度 1v1 话题包(季度末为每个业务员生成一份专属谈话方向)。所有场景既可以从 OKKI 拉数据(数据驱动),也可以老板嘴上描述(经验驱动),或两者结合。所有谈话稿单独生成 Markdown 文件方便老板复制使用。\n---",
+      "type": "SKILL",
+      "category": "OKKI",
+      "role": "客户经理",
+      "audience": "对客赋能",
+      "tags": [],
+      "author": "陶磊",
+      "version": "v1.0",
+      "cert": "none",
+      "likes": 0,
+      "downloads": 0,
+      "createdAt": "2026-07-24",
+      "content": "## 核心功能(三合一)\n\n**分支 A ｜ 个人诊断 + 谈话稿**\n- 甩入某个业务员的名字,skill 自动从 OKKI 抓他的客户裸奔率、商机停滞率、订单毛利/风险等三块数据,喂给画像引擎做初始打分\n- 结合老板补充的感性描述(可选),归纳出\"能力·意愿·资历\"画像标签\n- 输出:画像卡 + 追问 + 谈话稿 Markdown 文件\n",
+      "fileName": "主管-OKKI员工谈单周期质检.zip",
+      "fileSize": 26661,
+      "fileType": "application/zip",
+      "fileUrl": "./data/files/okki-t31b/OKKI.zip"
     }
   ],
-  "updatedAt": "2026-07-24T15:33:22.268Z"
+  "updatedAt": "2026-07-24T15:37:32.247Z"
 }
