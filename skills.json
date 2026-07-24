@@ -2,11 +2,11 @@
   "skills": [
     {
       "id": "汤-交通锥详情制作-8b34",
-      "name": "交通锥详情制作",
+      "name": "汤 交通锥详情制作",
       "description": "4图极简 + 1200px + 大宗师 5 步 + AIDA,覆盖 10 大道路交通安全后市场品类",
       "type": "SKILL",
       "category": "详情制作(4图)",
-      "role": "运营",
+      "role": "客户经理",
       "audience": "对客赋能",
       "tags": [
         "交通锥",
@@ -23,8 +23,7 @@
       "fileName": "汤-交通锥详情制作_技能包_20260722_1420.zip",
       "fileSize": 7215,
       "fileType": "application/octet-stream",
-      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/8b34/__20260722_1420.zip",
-      "updatedAt": "2026-07-24"
+      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/8b34/__20260722_1420.zip"
     },
     {
       "id": "汤-季度总结全案-a362",
@@ -53,11 +52,11 @@
     },
     {
       "id": "b2b-品牌官网-知识库-d522",
-      "name": "B2B 品牌官网 + 知识库",
+      "name": "业务-B2B 产品册官网 + 知识库",
       "description": "Next.js 品牌官网,16 语覆盖,GitHub Pages 上线",
       "type": "SKILL",
-      "category": "独立站建站",
-      "role": "运营",
+      "category": "FAQ 知识库",
+      "role": "业务",
       "audience": "对客赋能",
       "tags": [
         "独立站",
@@ -75,7 +74,8 @@
       "fileName": "B2B产品目录品牌官网_v1.2_20260628-215459.zip",
       "fileSize": 38178,
       "fileType": "application/zip",
-      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/b2b-d522/B2B_v1.2_20260628-215459.zip"
+      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/b2b-d522/B2B_v1.2_20260628-215459.zip",
+      "updatedAt": "2026-07-24"
     },
     {
       "id": "awb-售卖打法手册-8a50",
@@ -203,5 +203,5 @@
       "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/76e4/B2B.md"
     }
   ],
-  "updatedAt": "2026-07-24T14:24:07.465Z"
+  "updatedAt": "2026-07-24T14:52:15.091Z"
 }
