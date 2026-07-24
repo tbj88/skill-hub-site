@@ -237,7 +237,28 @@
       "fileSize": 16657,
       "fileType": "application/zip",
       "fileUrl": "./data/files/okki-pro-xhtl/OKKI-Pro.zip"
+    },
+    {
+      "id": "okki-klhj",
+      "name": "主管-OKKI员工商机工作流分析复盘",
+      "description": "一键盘点公司 OKKI(小满) CRM 里\"结束日期在今日至下月底\"的重点商机,按业务员拆开追踪进度,同时揪出停滞、无动态、大金额低推进的风险商机。适用于外贸管理者每日/每周的商机复盘、大单风险预警、业务员进度追踪等场景。所有交付物仅在对话中呈现,不生成任何文件。\n\n",
+      "type": "SKILL",
+      "category": "OKKI",
+      "role": "业务主管",
+      "audience": "对客赋能",
+      "tags": [],
+      "author": "陶磊",
+      "version": "v1.0",
+      "cert": "none",
+      "likes": 0,
+      "downloads": 0,
+      "createdAt": "2026-07-24",
+      "content": "核心功能\n重点商机自动锁定:默认抓\"结束日期在今日至下月底\"、按学员勾选的阶段筛选的重点商机。\nAI 进展提取:深入每个商机的\"AI 聊天旅程\",抓取昨日/今日客户对话的关键点(价格/付款/物流/技术等),抓不到时降级抓最近跟进记录代替。\n业务员进度追踪(报告 A):按跟进人分组,每个业务员一张卡片,详细列出他手上的所有重点商机 + 昨日进展。\n风险商机预警(报告 B):三档判定(严重/偏高/正常),自动揪出无动态/阶段停滞/大金额低推进的高危商机。\n反问式收尾:出报告后主动给出 4 个后续动作选项让管理者决策。",
+      "fileName": "主管-OKKI员工商机工作流分析复盘_clean.zip",
+      "fileSize": 10035,
+      "fileType": "application/zip",
+      "fileUrl": "./data/files/okki-klhj/OKKI_clean.zip"
     }
   ],
-  "updatedAt": "2026-07-24T15:57:35.837Z"
+  "updatedAt": "2026-07-24T15:59:01.111Z"
 }
