@@ -1,32 +1,6 @@
 {
   "skills": [
     {
-      "id": "长筒丝袜-b2b-爆品打法-72fb",
-      "name": "长筒丝袜 B2B 爆品打法",
-      "description": "长筒丝袜 6+6 主图 + 附图 + A+ 信息图一键出图",
-      "type": "SKILL",
-      "category": "主图制作(6图)",
-      "role": "客户经理",
-      "audience": "对客赋能",
-      "tags": [
-        "长筒丝袜",
-        "B2B",
-        "爆品",
-        "A+图"
-      ],
-      "author": "Bao juan Tang",
-      "version": "v1.0",
-      "cert": "cert-official",
-      "likes": 33,
-      "downloads": 118,
-      "createdAt": "2026-07-12",
-      "content": "> 📦 Accio Work Skill 打包格式 · 直接上传到 Accio Work \"技能管理\"页安装即用\n\n---\n\n---\nname: hosiery-b2b-four-detail-images\ndescription: >-\n  全球丝袜、连裤袜、压力袜和高端袜品的“B端4张详情图”策划与制作技能。用户提出Alibaba.com、批发、采购商、品牌客户、OEM/ODM、private label、结构图、技术参数、工艺微距、功能测试、工厂品控、定制交付或B端详情图时必须使用。固定输出产品结构、材质工艺、量化验证、OEM/ODM与供应交付四张采购决策图。不得混入跨境C端爆品标题、情绪穿搭或消费者购买话术；不虚构结构、测试、认证、MOQ、产能、交期、工厂或仓库。\ncompatibility: Requires image/document reading; image composition or generation is optional when the user asks for finished images.\n---\n\n# 丝袜B端四张采购详情图\n\n## 唯一受众\n\n本技能只服务品牌采购商、进口商、批发商、零售商买手和private label客户，目标是降低技术核验、定制沟通和供应评估成本。\n\n不得输出跨境C端内容：爆品标题、社媒钩子、消费者情绪文案、穿搭氛围、显瘦叙事、个人购买CTA或零售退换政策。用户需要C端六图与标题时使用 `hosiery-cross-border-c-end-six-images`。\n\n## 输入预检\n\n收集：\n\n1. 产品规格：品类、D数、成分、尺码、颜色、腰头、裆型、腿部、袜头/袜跟结构。\n2. 技术证据：针数、压力、回弹、耐磨、防勾丝、透气、保暖等测试条件、标准、结果和报告。\n3. 定制范围：颜色、Logo、腰卡、吊牌、包装、尺码、配方或结构限制。\n4. 商务条件：MOQ、样品政策、打样周期、交期、产能和付款/贸易条件（仅用户要求时）。\n5. 供应证据：工厂、设备、生产流程、质检节点、仓库、包装、认证和审厂资料。\n6. 素材：产品全貌、五区微距、测试照片、技术图纸、工厂/仓库/包装/证书原件。\n\n提到有图片但当前消息无附件、文件或可访问URL时，视为图片缺失；不得搜索其他素材代替或臆测产品事实。\n\n## 证据门\n\n- A级：用户确认的规格、技术报告、证书、商务和供应数据。\n- B级：从已读取清晰原图直接可见的外观和结构。\n- C级：尚无证据的参数、功能、认证、定制或供应能力。\n\n只有A级/B级可进入英文图片文案、数据卡和提示词。C级只进入中文补料动作，不得预写英文采购卖点。\n\n禁止跳推：\n\n- 15D或含氨纶不证明柔软、高回弹、防勾丝或不变形。\n- T裆不证明无缝、平缝、透气或隐形。\n- 加固袜头不证明具体耐磨次数或使用寿命。\n- 有颜色/包装定制不等于支持Logo、private label或全套OEM/ODM。\n- 有工厂照片不等于某个产能、交期或质量体系。\n- 证书图标不等于证书覆盖当前产品、工厂或有效期。\n- 单张正面图不能补造裆部剖面、显微纤维、测试结果、工厂或仓库。\n\n## 固定四张B端详情图\n\n每张图输出：采购商问题、决策任务、版式、可发布英文文案、证据来源、真实素材、制作提示词、禁用项、C级补料动作。\n\n### 图1：产品五区结构与规格\n\n回答：产品具体怎么做，和目标规格是否一致？\n\n- 中央为真实产品全貌，周围标注腰头、裆部、腿部、袜头、袜跟/脚底；按实际结构删减，不硬凑。\n- 配置规格卡：D数、成分、颜色、尺码、裆型等已确认字段。\n- 每个放大窗用“部位 + 工艺/结构 + 可核验规格”，不写无证消费者收益。\n- 压力袜有报告时可展示压力梯度和尺码条件。\n\n### 图2：材质、针织工艺与质检细节\n\n回答：材料和做工是否稳定、能否验收？\n\n- 使用真实腿部织纹、腰头、裆部缝线、袜头/袜跟微距。\n- 可加入成分、纱线规格、针数、缝线方法或公差，但必须有规格单或技术图纸。\n- 工艺流程或质检点只展示真实环节，如织造、染色、定型、外观检查、尺寸检查。\n- 显微纤维、针密度和剖面图不能由AI生成后冒充技术证据。\n\n### 图3：功能测试与量化验证\n\n回答：关键性能是否有可复核数据？\n\n- 选择1–2项与采购风险最相关的测试：压力、回弹、耐磨、防勾丝、色牢度、透气或保暖。\n- 展示测试标准、条件、样本、仪器、单位、结果和报告来源。\n- 第三方报告优先于工厂自测；工厂自测须明确标注。\n- 无测试数据时，本图只输出中文检测方案与所需字段，不制作英文结果卡，不生成实验室或仪器。\n\n### 图4：OEM/ODM、品控与交付能力\n\n回答：供应商能否按要求定制并稳定交货？\n\n- 上半区：已确认定制矩阵——颜色、Logo位置、腰卡/吊牌、包装、尺码或结构。\n- 下半区：真实流程——需求确认、打样、样品确认、大货、质检、包装、出货；按实际删改。\n- 最多展示3项硬数据：MOQ、样品周期、交期、产能、质检节点或认证；全部需A级证据。\n- CTA使用 `Request a Specification Review`, `Request Samples` 或 `Discuss Private Label Requirements`，前提是能力已确认。\n- 工厂、仓库、包装、证书使用真实素材，不能生成后冒充。\n\n## B端英文文案规则\n\n- 用专业、短促、可核验的英文，避免情绪化或奢侈品式空话。\n- 优先使用 `product specification`, `construction detail`, `test condition`, `customization option`, `quality checkpoint`, `lead time`。\n- 不写 `perfect legs`, `must-have`, `viral`, `slimming`, `luxury feel` 等C端词。\n- 不使用无证据的 `best factory`, `lowest price`, `100% defect-free`, `guaranteed delivery`, `medical grade`。\n- 参数、单位和贸易术语保持原资料精度与含义。\n\n## 视觉规范\n\n- 技术型中性底色、清晰网格、真实微距、线稿标注和数据卡。\n- 一张图解决一个采购问题；数据少而可信，不堆图标。\n- 工厂和仓库照片保持真实拍摄质感，不用宏大生成场景。\n- 适配移动端阅读：关键数字大于说明文字，表格不横向拥挤。\n\n## 输出模板\n\n```markdown\n# B端产品与采购定位\n- 目标采购商：\n- 采购用途：\n- A级事实：\n- B级事实：\n- C级缺口：\n\n# 四张B端详情图执行表\n| 图序 | 采购商问题 | 决策任务 | 版式结构 | 可发布英文文案 | 证据来源 | 真实素材 | 制作提示词 | 禁用项 | C级补料动作 |\n|---|---|---|---|---|---|---|---|---|---|\n\n# 图1 产品五区结构与规格\n# 图2 材质、针织工艺与质检细节\n# 图3 功能测试与量化验证\n# 图4 OEM/ODM、品控与交付能力\n\n# 参数与证据来源表\n# 待补资料清单\n# 发布前复核\n```\n\n## 实际成图流程\n\n1. 建立产品指纹、规格表和证据表。\n2. 只把A级/B级内容转为英文图文；C级从提示词和成图中删除。\n3. 真实产品图只做裁切、放大和排版，不改变产品本体。\n4. 生成工具只可生成抽象背景、线条、无数据图标等非证明性内容。\n5. 结构剖面、显微纤维、测试、认证、包装、工厂、仓库和物流必须来自真实素材。\n6. 恰好输出4张独立图片，不用长图或拼图代替。\n7. 发布前调用袜子图文合规检查。\n\n## 验收标准\n\n- 恰好4张B端图，依次覆盖结构规格、材质工艺、量化验证、定制交付。\n- 每张图回答明确采购问题，并提供可追溯证据。\n- 不输出C端爆品标题、穿搭情绪、显瘦或个人购买话术。\n- 不虚构MOQ、OEM/ODM、测试、认证、产能、交期、工厂或仓库。\n- 产品保真，技术信息准确，移动端可读。\n",
-      "fileName": "hosiery-b2b.skill",
-      "fileSize": 4006,
-      "fileType": "application/octet-stream",
-      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/b2b-72fb/hosiery-b2b.skill"
-    },
-    {
       "id": "汤-交通锥详情制作-8b34",
       "name": "汤 交通锥详情制作",
       "description": "4图极简 + 1200px + 大宗师 5 步 + AIDA,覆盖 10 大道路交通安全后市场品类",
@@ -76,31 +50,6 @@
       "fileSize": 34983,
       "fileType": "application/octet-stream",
       "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/a32a/__20260721_1101.skill"
-    },
-    {
-      "id": "快速客户风控筛查-bf12",
-      "name": "快速客户风控筛查",
-      "description": "新买家 30 分钟定真伪,4 维评分+三连问筛真伪话术",
-      "type": "SKILL",
-      "category": "客户背调",
-      "role": "业务",
-      "audience": "对客赋能",
-      "tags": [
-        "背调",
-        "风控",
-        "新买家"
-      ],
-      "author": "Bao juan Tang",
-      "version": "v1.0",
-      "cert": "cert-official",
-      "likes": 27,
-      "downloads": 98,
-      "createdAt": "2026-07-14",
-      "content": "> 📦 Accio Work Skill 打包格式 · 直接上传到 Accio Work \"技能管理\"页安装即用\n\n---\n\n---\nname: buyer-risk-triage\ndescription: |\n  阿里国际站「新买家线索快速风控筛查」技能（30 分钟定真伪版）。专攻「注册 <30 天 + 公司/邮箱空白 + 高发套价地区（UAE / 印度 / 巴基斯坦 / 沙特 / 尼日利亚）」的模糊线索场景。\n  4 维评分矩阵（账户成熟度 / 身份透明度 / 沟通严肃度 / 采购能力）→ 全渠道匹配 + 显式排除干扰项 → 红黄绿三级评级 → 三连问筛真伪话术 + 首单风控铁律。\n  触发关键词：筛真伪、快速背调、新买家、这买家靠谱吗、这询盘要不要跟、UAE 询盘、印度询盘、套价客户、可疑客户、买家风险评估、20 天新账户、新注册买家、akhlas、TM 询盘。\n  适用场景：主公给一个阿里买家显示名（可能带 buyer ID / 国别 / 注册时间）+ 一句「靠不靠谱 / 值不值得跟 / 要不要报价」，即触发本技能，产出 4 维风险评分 + 三连问话术 + 首单风控建议。\n  与 `overseas-client-due-diligence` 差异：本 skill 专治「除了阿里账号信息一无所知」的模糊线索（Track B），15-30 分钟给判决；对方是「有公司名/网站/邮箱」的实体客户，走 overseas-client-due-diligence 6 大模块全套流程。\n  与 `inquiry-master` 差异：inquiry-master 是「已有 N 条询盘做粒度化复盘 + OKKI 建档」，本 skill 是「单条询盘上门 3 分钟内做风控红绿灯」。\n---\n\n# Buyer Risk Triage · 新买家线索 30 分钟风控筛查\n\n> 主公给一个阿里国际站买家显示名（可能带国别、注册时间、买家 ID），要求「快速判断这个买家靠不靠谱 / 要不要投入资源报价」，本 skill 给出 4 维评分 + 判决 + 可直接抄作业的三连问话术。\n\n## 📌 触发信号\n\n用户消息命中以下**任一**信号 + 上下文有阿里买家线索（显示名 / buyer ID / 询盘截图）时触发：\n\n- \"这买家靠谱吗 / 靠不靠谱 / 值不值得跟 / 要不要报价\"\n- \"帮我筛一下真伪 / 快速背调一下 / 这询盘要不要投入\"\n- \"新买家 / 新注册 / 20 天新账户 / 刚注册的\"\n- \"UAE / 印度 / 巴基斯坦 / 沙特 / 尼日利亚 询盘\"\n- \"套价客户 / 可疑 / 感觉不对 / 只发一句要报价的\"\n- 附带买家后台截图，且 **邮箱/公司/网站字段为空白**\n\n## ⚠️ 与相邻 skill 边界\n\n| 场景 | 用哪个 |\n|---|---|\n| 买家除阿里账号信息**全空白** + 需 30 分钟决策 | **本 skill（buyer-risk-triage）** |\n| 客户有公司名 / 官网 / 邮箱 / LinkedIn，需 6 大模块全案尽调 | `overseas-client-due-diligence` |\n| 一批询盘做季度/月度/单日粒度复盘 + OKKI 建档 | `inquiry-master` |\n| 买家已经报价合作过，要做定期跟进 | `inquiry-master` 单个询盘分析档 |\n\n---\n\n## 🎯 执行流程（三步铁律）\n\n### Step 1 · 情报采集（≤3 min · 不问主公）\n\n从主公提供的截图/文字提取以下字段，缺项写 \"空白\"：\n\n```yaml\nbuyer_display_name: <显示名，如 akhlas aslam>\nbuyer_id: <ae19094090644ugec / 无>\ncountry: <UAE / IN / PK / SA / NG / ...>\nlevel: <L1/L2/L3/L4/L5/未标>\nregister_date: <YYYY-MM-DD>\naccount_age_days: <计算：today - register_date>\nemail: <邮箱 / 空白>\ncompany_name: <公司名 / 空白>\nphone: <电话 / 空白>\ninquiry_channel: <TM沟通 / 邮件 / RFQ / 站内信>\ninquiry_content: <询盘正文摘要 or \"无正文，只要报价\">\nseller_store_url: <主公店铺 URL，用于确定询盘落点>\nseller_category: <户外家具 / 密封件 / 硅胶 / ... >\n```\n\n**红线**：如果主公没主动给店铺信息，**不要用店铺画像去反推买家意图**（主公 2026-07-12 明确纠偏过：抛开店铺信息做纯买家背调）。店铺信息**只用于确认询盘落点**，不用于给买家贴标签。\n\n### Step 2 · 全渠道匹配（≤10 min · 显式排除干扰项）\n\n按优先级依次跑，每条都要**留痕**（记录检索关键词 + 命中/未命中）：\n\n| 渠道 | 检索方式 | 用途 |\n|---|---|---|\n| **OKKI CRM AiReach** | 6 大源（Apollo/LinkedIn/Hunter/Snov/RocketReach/ContactOut）姓名 + 国别 | 有企业绑定？有邮箱？有职位？ |\n| **LinkedIn** | site:linkedin.com \"买家显示名\" \"国别\" | 精确匹配职业档案 |\n| **Facebook** | 姓名 + 国别 | 个人生活账户 / 生意主页 |\n| **Google/Bing** | \"显示名\" + \"trade\" / \"import\" / \"company\" | 全网公开商业足迹 |\n| **UAE 经济局** | 若在 UAE，反查有无 Trade License | 企业实体确认 |\n| **Truecaller** | 若已获电话号，反查归属人 | 电话名字一致性 |\n| **海关数据** | 猎豹 / OKKI 海关 / Panjiva | 有无进出口实操 |\n\n**姓名匹配 3 大陷阱（必须显式排除）**：\n1. **阿拉伯/穆斯林同名重名率极高**：`akhlas / ikhlas / akhlaq / akhlas ahmed / muhammed akhlas` 都不算精确匹配，禁止把巴基斯坦公共卫生工作者当作 UAE 家具采购。\n2. **前缀冠名词干扰**：`Al Akhlas / Al Amin / Al Noor` 是阿拉伯宗教冠名词，**不代表归属**。含有 \"Al Akhlas\" 的食品/贸易/地产公司必须排除。\n3. **拼写变体**：`Raja Ikhlas Aslam` 与 `akhlas aslam` 是不同人。\n\n**降权规则**：候选人**行业与主公店铺完全不匹配**（如家具询盘却匹配到公共卫生工作者）→ 直接排除，不列为\"可能候选\"。\n\n### Step 3 · 4 维评分 + 判决（≤5 min）\n\n按下表打分，取**最高单项**决定总评级：\n\n| 维度 | 🟢 绿（低风险） | 🟡 黄（中风险） | 🔴 红（高风险） |\n|---|---|---|---|\n| **账户成熟度** | 注册 ≥1 年 | 30 天-1 年 | **<30 天** |\n| **身份透明度** | 有公司+邮箱+LinkedIn 三合一 | 有其中 1-2 项 | **全部空白** |\n| **沟通严肃度** | 完整询盘正文（品类/数量/规格） | 简短一两句 | **只要报价 / 无正文** |\n| **采购能力** | 有海关记录 or 老买家 | 目录级问询 | **无任何采购痕迹** |\n\n**总评级 = 单项最高**（3 项黄 + 1 项红 = 🔴 红）。\n\n**任一项 🔴 红** → 判定为**高风险线索**，走\"最小投入 + 三连问筛真伪 + 首单严守风控\"路径。\n\n---\n\n## 📝 输出模板（直接抄作业）\n\n主公报告统一按以下结构输出，禁止自由发挥：\n\n```markdown\n### 🔍 <买家显示名>（<国别>）线索风控筛查报告\n\n#### 📌 输入线索\n| 字段 | 内容 |\n| :--- | :--- |\n| 显示名 | ... |\n| 阿里买家 ID | ... |\n| 国别 | ... |\n| 等级 | ... |\n| 注册时间 | YYYY-MM-DD（账户龄 N 天） |\n| 邮箱 / 公司 / 电话 | ... |\n| 沟通渠道 | TM / 邮件 / RFQ |\n| 询盘去向 | 主公店铺 URL |\n\n#### 🕵️ 全渠道匹配结果\n- **✅ 已核实候选人**：<姓名 + 身份 + 排除理由>\n- **🟡 低置信候选人**：<列 1-3 人 + 为何不匹配>\n- **🔴 已排除干扰项**：<列出所有 Al-XXX 前缀公司 + 拼写变体>\n\n#### 📊 4 维评分\n| 维度 | 评级 | 依据 |\n| :--- | :--- | :--- |\n| 账户成熟度 | 🔴/🟡/🟢 | 注册 X 天 |\n| 身份透明度 | 🔴/🟡/🟢 | 邮箱/公司/网站空白项 |\n| 沟通严肃度 | 🔴/🟡/🟢 | 询盘正文分析 |\n| 采购能力 | 🔴/🟡/🟢 | 海关/CRM 命中情况 |\n\n**总评级**：🔴 红 / 🟡 黄 / 🟢 绿\n\n#### 🎯 销售验证与破冰建议（30 分钟定真伪）\n**Step 1 · 三连问话术（English opener，直接复制）**：\n> Hi <name>, thanks for reaching out on Alibaba. To prepare an accurate quotation for you, could you kindly share:\n> 1. Your company name and Trade License / Registration No. (so we can arrange proper commercial documents)\n> 2. Your WhatsApp or direct phone number (for faster technical discussion)\n> 3. The specific product model, target quantity, and destination port\n>\n> Once we have these, our engineer will send you a tailored quotation within 24 hours.\n\n**Step 2 · 核验动作**：\n- UAE 客户 → 拿到执照号后通过 UAE 经济局 (https://www.economy.gov.ae) 反查\n- 印度客户 → 通过 MCA (https://www.mca.gov.in) 反查 CIN 号\n- 拿到 WhatsApp → 用 Truecaller 反查归属人\n- 拿到公司名 → 官网 whois 查注册年份 + LinkedIn 查员工数\n\n**Step 3 · 判定分岔**：\n- 30 分钟内**主动提供** 2+ 项 → 升级为 🟡 黄，正式建档跟进\n- 沉默 / 反复要报价 / 提供虚假信息 → 定性套价客户，**不再投入资源**\n\n#### 🚨 首单风控铁律（销售必守）\n1. ❌ 严禁赊账 / LC at Sight / DP / DA\n2. ✅ 首单**只接受 100% 前 TT 或阿里信保**\n3. ❌ 不发精细化定制报价单\n4. ✅ 仅提供产品目录 + 起订价区间\n5. ✅ 所有沟通留档到 OKKI，标记「高风险 - 待核验」\n\n#### 📌 一句话结论\n<买家名> 是 <国别>\n\n---\n\n**(内容较长,已截取前 5000 字符 · 完整版请下载文件查看)**",
-      "fileName": "客户背调2026.7.12.skill",
-      "fileSize": 5707,
-      "fileType": "application/octet-stream",
-      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/bf12/2026.7.12.skill"
     },
     {
       "id": "汤-季度总结全案-a362",
@@ -401,5 +350,5 @@
       "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/89c2/skill.md"
     }
   ],
-  "updatedAt": "2026-07-24T08:45:54.940Z"
+  "updatedAt": "2026-07-24T08:47:39.055Z"
 }
