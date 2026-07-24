@@ -153,30 +153,6 @@
       "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/shs-f723/SHS_.md"
     },
     {
-      "id": "长筒丝袜-b2b-技能说明书-0422",
-      "name": "长筒丝袜 B2B 技能说明书",
-      "description": "长筒丝袜品类专属 skill.md 说明文档",
-      "type": "SKILL",
-      "category": "视觉制作",
-      "role": "客户经理",
-      "audience": "对客赋能",
-      "tags": [
-        "丝袜",
-        "说明书"
-      ],
-      "author": "Bao juan Tang",
-      "version": "v1.0",
-      "cert": "cert-official",
-      "likes": 30,
-      "downloads": 36,
-      "createdAt": "2026-07-12",
-      "content": "> 📄 Markdown 文档 · 打开后可直接查看完整说明\n\n---\n\n---\nname: hosiery-b2b-four-detail-images\ndescription: >-\n  全球丝袜、连裤袜、压力袜和高端袜品的“B端4张详情图”策划与制作技能。用户提出Alibaba.com、批发、采购商、品牌客户、OEM/ODM、private label、结构图、技术参数、工艺微距、功能测试、工厂品控、定制交付或B端详情图时必须使用。固定输出产品结构、材质工艺、量化验证、OEM/ODM与供应交付四张采购决策图。不得混入跨境C端爆品标题、情绪穿搭或消费者购买话术；不虚构结构、测试、认证、MOQ、产能、交期、工厂或仓库。\ncompatibility: Requires image/document reading; image composition or generation is optional when the user asks for finished images.\n---\n\n# 丝袜B端四张采购详情图\n\n## 唯一受众\n\n本技能只服务品牌采购商、进口商、批发商、零售商买手和private label客户，目标是降低技术核验、定制沟通和供应评估成本。\n\n不得输出跨境C端内容：爆品标题、社媒钩子、消费者情绪文案、穿搭氛围、显瘦叙事、个人购买CTA或零售退换政策。用户需要C端六图与标题时使用 `hosiery-cross-border-c-end-six-images`。\n\n## 输入预检\n\n收集：\n\n1. 产品规格：品类、D数、成分、尺码、颜色、腰头、裆型、腿部、袜头/袜跟结构。\n2. 技术证据：针数、压力、回弹、耐磨、防勾丝、透气、保暖等测试条件、标准、结果和报告。\n3. 定制范围：颜色、Logo、腰卡、吊牌、包装、尺码、配方或结构限制。\n4. 商务条件：MOQ、样品政策、打样周期、交期、产能和付款/贸易条件（仅用户要求时）。\n5. 供应证据：工厂、设备、生产流程、质检节点、仓库、包装、认证和审厂资料。\n6. 素材：产品全貌、五区微距、测试照片、技术图纸、工厂/仓库/包装/证书原件。\n\n提到有图片但当前消息无附件、文件或可访问URL时，视为图片缺失；不得搜索其他素材代替或臆测产品事实。\n\n## 证据门\n\n- A级：用户确认的规格、技术报告、证书、商务和供应数据。\n- B级：从已读取清晰原图直接可见的外观和结构。\n- C级：尚无证据的参数、功能、认证、定制或供应能力。\n\n只有A级/B级可进入英文图片文案、数据卡和提示词。C级只进入中文补料动作，不得预写英文采购卖点。\n\n禁止跳推：\n\n- 15D或含氨纶不证明柔软、高回弹、防勾丝或不变形。\n- T裆不证明无缝、平缝、透气或隐形。\n- 加固袜头不证明具体耐磨次数或使用寿命。\n- 有颜色/包装定制不等于支持Logo、private label或全套OEM/ODM。\n- 有工厂照片不等于某个产能、交期或质量体系。\n- 证书图标不等于证书覆盖当前产品、工厂或有效期。\n- 单张正面图不能补造裆部剖面、显微纤维、测试结果、工厂或仓库。\n\n## 固定四张B端详情图\n\n每张图输出：采购商问题、决策任务、版式、可发布英文文案、证据来源、真实素材、制作提示词、禁用项、C级补料动作。\n\n### 图1：产品五区结构与规格\n\n回答：产品具体怎么做，和目标规格是否一致？\n\n- 中央为真实产品全貌，周围标注腰头、裆部、腿部、袜头、袜跟/脚底；按实际结构删减，不硬凑。\n- 配置规格卡：D数、成分、颜色、尺码、裆型等已确认字段。\n- 每个放大窗用“部位 + 工艺/结构 + 可核验规格”，不写无证消费者收益。\n- 压力袜有报告时可展示压力梯度和尺码条件。\n\n### 图2：材质、针织工艺与质检细节\n\n回答：材料和做工是否稳定、能否验收？\n\n- 使用真实腿部织纹、腰头、裆部缝线、袜头/袜跟微距。\n- 可加入成分、纱线规格、针数、缝线方法或公差，但必须有规格单或技术图纸。\n- 工艺流程或质检点只展示真实环节，如织造、染色、定型、外观检查、尺寸检查。\n- 显微纤维、针密度和剖面图不能由AI生成后冒充技术证据。\n\n### 图3：功能测试与量化验证\n\n回答：关键性能是否有可复核数据？\n\n- 选择1–2项与采购风险最相关的测试：压力、回弹、耐磨、防勾丝、色牢度、透气或保暖。\n- 展示测试标准、条件、样本、仪器、单位、结果和报告来源。\n- 第三方报告优先于工厂自测；工厂自测须明确标注。\n- 无测试数据时，本图只输出中文检测方案与所需字段，不制作英文结果卡，不生成实验室或仪器。\n\n### 图4：OEM/ODM、品控与交付能力\n\n回答：供应商能否按要求定制并稳定交货？\n\n- 上半区：已确认定制矩阵——颜色、Logo位置、腰卡/吊牌、包装、尺码或结构。\n- 下半区：真实流程——需求确认、打样、样品确认、大货、质检、包装、出货；按实际删改。\n- 最多展示3项硬数据：MOQ、样品周期、交期、产能、质检节点或认证；全部需A级证据。\n- CTA使用 `Request a Specification Review`, `Request Samples` 或 `Discuss Private Label Requirements`，前提是能力已确认。\n- 工厂、仓库、包装、证书使用真实素材，不能生成后冒充。\n\n## B端英文文案规则\n\n- 用专业、短促、可核验的英文，避免情绪化或奢侈品式空话。\n- 优先使用 `product specification`, `construction detail`, `test condition`, `customization option`, `quality checkpoint`, `lead time`。\n- 不写 `perfect legs`, `must-have`, `viral`, `slimming`, `luxury feel` 等C端词。\n- 不使用无证据的 `best factory`, `lowest price`, `100% defect-free`, `guaranteed delivery`, `medical grade`。\n- 参数、单位和贸易术语保持原资料精度与含义。\n\n## 视觉规范\n\n- 技术型中性底色、清晰网格、真实微距、线稿标注和数据卡。\n- 一张图解决一个采购问题；数据少而可信，不堆图标。\n- 工厂和仓库照片保持真实拍摄质感，不用宏大生成场景。\n- 适配移动端阅读：关键数字大于说明文字，表格不横向拥挤。\n\n## 输出模板\n\n```markdown\n# B端产品与采购定位\n- 目标采购商：\n- 采购用途：\n- A级事实：\n- B级事实：\n- C级缺口：\n\n# 四张B端详情图执行表\n| 图序 | 采购商问题 | 决策任务 | 版式结构 | 可发布英文文案 | 证据来源 | 真实素材 | 制作提示词 | 禁用项 | C级补料动作 |\n|---|---|---|---|---|---|---|---|---|---|\n\n# 图1 产品五区结构与规格\n# 图2 材质、针织工艺与质检细节\n# 图3 功能测试与量化验证\n# 图4 OEM/ODM、品控与交付能力\n\n# 参数与证据来源表\n# 待补资料清单\n# 发布前复核\n```\n\n## 实际成图流程\n\n1. 建立产品指纹、规格表和证据表。\n2. 只把A级/B级内容转为英文图文；C级从提示词和成图中删除。\n3. 真实产品图只做裁切、放大和排版，不改变产品本体。\n4. 生成工具只可生成抽象背景、线条、无数据图标等非证明性内容。\n5. 结构剖面、显微纤维、测试、认证、包装、工厂、仓库和物流必须来自真实素材。\n6. 恰好输出4张独立图片，不用长图或拼图代替。\n7. 发布前调用袜子图文合规检查。\n\n## 验收标准\n\n- 恰好4张B端图，依次覆盖结构规格、材质工艺、量化验证、定制交付。\n- 每张图回答明确采购问题，并提供可追溯证据。\n- 不输出C端爆品标题、穿搭情绪、显瘦或个人购买话术。\n- 不虚构MOQ、OEM/ODM、测试、认证、产能、交期、工厂或仓库。\n- 产品保真，技术信息准确，移动端可读。\n",
-      "fileName": "hosiery-b2b-skill.md",
-      "fileSize": 7694,
-      "fileType": "text/markdown",
-      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/b2b-0422/hosiery-b2b-skill.md"
-    },
-    {
       "id": "海外客户背调-6-大模块-3a26",
       "name": "海外客户背调 6 大模块",
       "description": "公开信息+资质+黑名单+信用+舆情+尽调 6 模块工作流",
@@ -227,56 +203,6 @@
       "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/icbu-9300/ICBU.md"
     },
     {
-      "id": "国际站智能发品-70ee",
-      "name": "国际站智能发品",
-      "description": "属性锚定三源交叉 + 价格三角定位,一键上架方案",
-      "type": "SKILL",
-      "category": "智能发品",
-      "role": "客户经理",
-      "audience": "对客赋能",
-      "tags": [
-        "发品",
-        "上架",
-        "ICBU"
-      ],
-      "author": "Bao juan Tang",
-      "version": "v1.0",
-      "cert": "cert-official",
-      "likes": 21,
-      "downloads": 205,
-      "createdAt": "2026-06-22",
-      "content": "> 📄 Markdown 文档 · 打开后可直接查看完整说明\n\n---\n\n---\nname: 国际站智能发品\nversion: 3.4.0\ndescription: |\n  支持 URL 发品、素材包发品和草稿发品三种模式，将商品发布到 Alibaba.com 国际站。\n  覆盖素材解析、发布前预检、批量发布和基于轮询机制的异步任务状态追踪；不处理商品字段编辑、卖点优化或市场分析。\nenabled: true\n\ntriggers:\n  - URL 发品\n  - 链接发品\n  - 素材包发品\n  - 国际站发布商品\n  - 批量发品\n  - 草稿发布\n  - 草稿商品上线\n  - 发品进度查询\n\nexamples:\n  - 基于这个 1688 链接帮我发布到国际站\n  - 用附件里的图片和 Excel 帮我发品\n  - 把这个草稿商品上线\n  - 查询一下刚才发品任务的结果\n\nexcludes:\n  - skill: alibaba-product-information-optimization\n    when: 用户要修改、编辑或优化已存在商品/草稿商品的标题、价格、卖点、图片、属性等字段\n  - skill: alibaba-hot-product-insight\n    when: 用户要分析热销原因、爆品趋势、热卖特征或市场榜单\n  - skill: alibaba-blue-ocean-finder\n    when: 用户要基于供需错配、低竞争或差异化机会决定发布什么商品\n\nworkflow: |\n  1. 识别入参类型（URL、素材文件或草稿商品）\n  2. 根据入参类型，一次性创建完整 DAG（task_create 全部 → task_update addBlockedBy 串依赖）\n  3. 按 DAG 顺序推进：task_update(in_progress) → 执行 → task_update(completed) → 下一个\n  4. URL 发品 DAG：url_validate → precheck → start → poll → present\n  5. 素材包发品 DAG：plan_select → [url_fetch?] → [image_edit?] → parse_collect → parse_analyze → [auto_merge?] → confirm → [merge?] → publish → poll → present\n  6. 草稿发品 DAG：draft_input → publish_draft → present\n\nrenderers:\n  icbu-publish-preview-render:\n    description: icbu-publish-preview 富文本渲染页面\n    url: https://air.alibaba.com/app/bc/aw-product-publish-preview/index.html\n\ntool_triggers:\n  - tool: bash\n    args:\n      command: '/workctl\\s+icbu\\s+product\\s+(?:material-extract|material-analysis|list-material-analysis-result|material-collect|publish|precheck-url-product-generate|start-url-product-generate|list-task-list|publish-draft)\\b/i'\n---\n\n# ICBU 国际站智能发品\n\n> **⚠️ 最高优先级指令（必须无条件遵守）：**\n> 本 skill 每次被唤醒/触发时，无论通过何种路径唤醒（包括 tool_triggers 拦截），**第一个动作必须是执行下方「判断规则」**，根据用户输入内容判断发品模式。\n> - 能判断 → 直接进入对应链路的第一步\n> - 不能判断 → 输出固定引导文案，等待用户选择\n>\n> **禁止跳过判断规则直接调用任何 workctl 工具。禁止从链路中间步骤开始执行。**\n>\n> **内置渲染协议执行规则：**\n> 素材包发品链路需要商品预览时，必须读取并遵循当前 skill 内置的 `reference/icbu-publish-preview/protocol.md`，按其协议构造 `SkillPayload`，并运行 `reference/icbu-publish-preview/scripts/render.ts` 生成 slot。该预览能力已作为当前 skill 的 renderer 暴露，最终必须返回 `slot.skillId = \"国际站智能发品\"`、`slot.renderer = \"icbu-publish-preview-render\"`。宿主通过拦截 `bun run render.ts` 的 stdout 输出获取 slot 元数据，并在工具结果末尾追加渲染指令（含 `:::slot[<id>]` 标记）。脚本成功执行后（退出码 0），本轮 assistant 回复**必须**先按工具结果中宿主追加的指令逐字输出 `:::slot[<id>]` 标记（独占一行，id 从指令中原样复制），再紧跟输出「渲染后引导话术」（发品总结 1-2 句 + 固定操作引导模板，详见 protocol.md），输出后立即结束本轮。禁止在 Bash 命令中追加 `>/dev/null`、`2>&1`、`> file`、`| cat`、`| tee` 或任何 stdout 重定向/管道；禁止追加 `--output-file` 参数。禁止引用或转述 stdout 原始 JSON 内容；禁止手动构造 slot JSON、slot 摘要或自拟 id 的占位串（id 只能从宿主指令中复制）；禁止再输出引导话术之外的自然语言、成功说明、解析摘要或确认提示。禁止把 `success`、`data`、错误格式的 slot 占位串、代码块、Markdown 表格、HTML/网页截图式预览、文本说明、链接、图片、Markdown 图片或 `#image:` 作为普通文本展示给用户。如果脚本执行失败（非零退出码），应说明失败原因，禁止降级输出 slot 文本或图文说明。禁止依赖同级目录中已安装的外部 skill。脚本成功执行后必须等待用户在下一轮明确确认，禁止在同一轮或未确认状态下进入 `publish` / `poll` / `present`。\n>\n> **tool_triggers 激活场景的特殊指令：**\n> 当本 skill 通过 `tool_triggers`（即拦截 workctl 工具调用）被激活时：\n> 1. **立即丢弃**被拦截的那次工具调用，不得继续执行它\n> 2. **忽略**所有从 memory 文件、缓存文件、历史会话中读取的上下文数据（包括但不限于 `memory/queries.json`、`TASK_HISTORY.json` 中与发品相关的历史记录）\n> 3. **仅以用户当前消息内容**作为输入，从「判断规则」开始执行\n> 4. 如果用户当前消息中无法判断发品模式，输出引导文案等待用户选择\n\n在 Alibaba.com 国际站（ICBU）发布商品，支持 **URL 发品**、**素材包发品** 和 **草稿发品** 三种模式。\n\n## 入参识别与链路路由\n\n根据用户输入内容识别发品模式，路由到对应的子技能，与唤醒路径无关：\n\n### 判断规则\n\n1. **URL 发品** — 满足以下任一条件：\n   - 用户输入中包含 `1688.com`、`taobao.com`、`tmall.com`、`aliexpress.com`、`amazon.com` 域名的链接\n   - 用户明确表示使用 URL/链接发品（如\"用链接发品\"、\"URL 发品\"）\n   - → 读取 [reference/url-publish.md](reference/url-publish.md)，按 DAG 结构创建任务并执行\n\n2. **素材包发品** — 满足以下任一条件：\n   - 用户上传了素材文件（图片、ZIP 包、Excel、Word、PowerPoint、Markdown、PDF 等）\n   - 用户明确表示使用素材包发品（如\"素材包发品\"、\"上传文件发品\"、\"解析素材\"）\n   - → 读取 [reference/material-publish.md](reference/material-publish.md)，按 DAG 结构创建任务并执行\n\n3. **草稿发品** — 满足以下任一条件：\n   - 用户明确提及\"发布草稿\"、\"草稿发布\"、\"将草稿商品上线\"、\"草稿态商品发布\"、\"草稿上线\"\n   - 用户表示商品已在草稿箱中，需要发布到线上\n   - → 读取 [reference/draft-publish.md](reference/draft-publish.md)，按 DAG 结构创建任务并执行\n\n4. **无法判断** — 若无法通过用户输入判断发品方式（既不包含 URL、也未上传文件、也未明确表达发品模式），**必须**输出以下固定引导文案，等待用户明确选择后再进入对应链路。**禁止自行推断、禁止跳过引导直接执行。**\n\n   > 我是 ICBU 国际站智能发品助手，可以帮您将商品发布到 Alibaba.com 国际站。请选择您的发品方式：\n   > 1. **URL 发品** — 提供商品链接（支持 1688、淘宝、天猫、AliExpress、Amazon），我将自动抓取商品信息并发布\n   > 2. **素材包发品** — 上传素材文件（图片、ZIP、Excel、Word 等），我将解析素材内容并发布\n   > 3. **草稿发品** — 将已保存的草稿态商品发布到线上\n\n## Task-Based Execution Protocol（任务执行协议）\n\n路由判断完成后，按以下协议执行发品流程。本 skill 的所有工作流均通过 **DAG（有向无环图）任务系统**驱动；plan 仍以 session 内存对象为权威（用于 `mode` / `category_key` / `delegate` / `subtasks` 等任务系统不承载的字段），task 系统承载所有 step 的持久化状态、依赖关系与用户可见的任务面板渲染。**禁止跳过本协议直接调用 workctl 工具。**\n\n### Step 1: Plan — 一次性创建完整 DAG（2-pass init）\n\n根据判断规则确定的发品模式，读取对应的 reference 文档，找到 DAG 结构定义；条件性 step（预处理 / `auto_merge`）按 reference 文档「DAG 规划判定」章节的判定规则决定是否纳入。本平台 task API（旧版本）**不支持在 `task_create` 时内联声明 `blockedBy`**，因此 plan 必须用 **2-pass** 模式初始化：\n\n1. **Pass 1（并行 task_create）**：在一个 response 中并行调用所有 `task_create`，按 plan.steps 顺序逐个创建；不传依赖字段。记录每次返回的 `task.id`（即 task 系统的字符串数字 id）回写到 `plan.steps[i].taskId`。\n2. **Pass 2（并行 task_update 串依赖）**：在下一个 response 中并行调用 `task_update`，对每个 step 用 `addBlockedBy: [<上一个 step.taskId>]` 串起线性依赖；分支或条件 step 的依赖另行处理（详见 reference 文档）。\n3. **Pass 3（\n\n---\n\n**(内容较长,已截取前 5000 字符 · 完整版请下载文件查看)**",
-      "fileName": "alibaba-product-publish.md",
-      "fileSize": 11896,
-      "fileType": "text/markdown",
-      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/70ee/alibaba-product-publish.md"
-    },
-    {
-      "id": "外贸品牌官网-知识库-76e4",
-      "name": "外贸品牌官网 + 知识库",
-      "description": "B2B 独立站一键生成器,3 级权限 + 自动翻译",
-      "type": "SKILL",
-      "category": "独立站建站",
-      "role": "运营",
-      "audience": "对客赋能",
-      "tags": [
-        "独立站",
-        "外贸",
-        "知识库"
-      ],
-      "author": "Bao juan Tang",
-      "version": "v1.0",
-      "cert": "cert-official",
-      "likes": 15,
-      "downloads": 146,
-      "createdAt": "2026-06-27",
-      "content": "> 📄 Markdown 文档 · 打开后可直接查看完整说明\n\n---\n\n---\nname: 外贸 B2B 品牌官网 + 知识库网站\nversion: 1.0\ndescription: |\n  外贸 B2B 品牌官网 + 知识库网站一键生成器（行业通用版）。\n  输入支持 3 种：\n    1) Alibaba.com / Made-in-China / 1688 店铺链接\n    2) 客户公司官网链接\n    3) 客户整理好的资料文件夹（结构见 INPUT_GUIDE.md）\n  输出：生产级多语言（EN/中/DE/ES）品牌官网，部署到 GitHub Pages，\n  支持 3 级权限（客户 / 业务员 / 管理员）、后台全可编辑、自动翻译、\n  图片直传、全球 CDN 访问。\n\n  触发词：做一个企业官网、做一个品牌官网、做一个独立站、做一个外贸独立站、\n  把店铺做成独立站、把阿里店铺改成品牌官网、做工厂品牌门面、做一个企业知识库、\n  ODM 供应商网站、外贸品牌站、build a B2B brand website、company catalog site、\n  alibaba store to independent site。\n---\n\n# B2B 品牌官网构建器 · 行业通用版 v1.0\n\n> 本技能把任何外贸工厂的零散资料（店铺/官网/文件夹）变成一个\n> 高端品牌官网，部署到 GitHub Pages 免费托管 + 全球 CDN 加速。\n> 已在真实客户（台州爱以思 · 户外 PP 编织地垫）实战验证。\n\n---\n\n## 1. 起手决策树（先做这一步）\n\n```\n用户想做一个 B2B 品牌官网\n         │\n         ├─ 有 Alibaba / 1688 / Made-in-China 店铺链接？  → 走流程 A（爬店铺）\n         ├─ 有公司官网？                                    → 走流程 B（爬官网）\n         ├─ 有整理好的资料文件夹？                          → 走流程 C（读文件夹）\n         └─ 三样都没有？                                    → 走流程 D（提问 7 题）\n```\n\n**告诉用户你走的是哪个流程，4 个流程不要混用。** 选一个走到底。\n\n---\n\n## 2. 标准交付物（每次都要产出这些）\n\nGitHub 仓库一份，包含：\n\n| 文件 | 用途 |\n|---|---|\n| `index.html` | 单文件 SPA，所有逻辑+样式+多语言都内联 |\n| `data.json` | 全部可编辑内容（产品/资质/展会/合作品牌/首页区块）|\n| `hero/*.jpg` | Hero 轮播大图 |\n| `logos/*.png` | 客户 Logo 文件 |\n| `textures/*.png` | 材质 / 纹理素材（可选）|\n| `uploads/*` | 管理员后台上传的图（运行时生成）|\n| `ai-previews/*` | 可选：预生成的 AI 实景图 |\n| `交接说明.md` | 给客户的中文操作手册 |\n\n加上：GitHub Pages 启用 → 全球公开地址 `https://{user}.github.io/{repo}/`\n\n---\n\n## 3. 3 级访问权限（核心 — 必须严格按这个实现）\n\n| URL | 谁能看 | 能做什么 |\n|---|---|---|\n| `https://{user}.github.io/{repo}/` | 客户 / 买家 | **只读**。不能看到任何\"编辑\"按钮，不能看到内部模块 |\n| `https://{user}.github.io/{repo}/?staff` | 内部业务员 | 客户视图 + 多 2 个内部模块：**情报/画像** + **话术/SOP**。只读，软密码（`localStorage.{brand}_staff_ok=\"1\"`）|\n| `https://{user}.github.io/{repo}/?admin` | 老板 / 主管 | 上述全部 + **每个模块都能编辑/删除/新增**。令牌 = GitHub fine-grained PAT，存 `localStorage.{brand}_admin_token` |\n\n**铁律：**\n- `isAdmin()` 必须同时满足：URL 带 `?admin` 参数 **且** 本地有 token\n- 业务员和管理员检测都是 URL 参数控制，客户截屏公开页绝不会看到任何\"编辑\"按钮\n- localStorage 键名必须带品牌前缀（如 `aiyisi_lang`，不要光叫 `lang`），多品牌管理员在同一浏览器不会冲突\n\n---\n\n## 4. 标准导航（永远是这 4-6 项）\n\n```\n首页 | 认证资质 | 产品目录 | 合作品牌     [🌐 中文 ▾]\n                                [+staff/admin 模式多 2 项：情报/画像 | 话术/SOP]\n```\n\n**禁用这些名字**（听起来很 low）：\n- \"Products\" → 改用 **产品目录 / Catalog**\n- \"Cases\" → 改用 **合作品牌 / Partner Brands**\n- \"About Us\" → 用 **认证资质**（包含资质 + 关于我们）\n- \"品牌资产 / Brand Assets\" → 直接砍掉（鸡肋栏目，无业务价值）\n\n---\n\n## 5. 首页必备模块（按这个顺序）\n\n```\n1. Hero 轮播             (3 张大图，21:9 宽屏，品牌主张 + 2 个 CTA)\n2. 数据成就横条          (6 项：年限 / 厂区面积 / 出口比例 / 复购率 / 专利数 / 准时发货率)\n3. Why-{品牌} 卡片矩阵    (5-6 张：高新企业 / 资质认证 / 全工艺 / OEM / 全球展会 / 亚马逊卖家友好)\n4. 全球展会矩阵          (可点击 → 跳到展会详情页，含每届记录)\n5. 三大产品线分类入口     (3 张：从每类前 3 款产品的图自动派生)\n6. 客户 Logo 墙          (5-6 个零售商：Aldi/Lidl/Home Depot/Kmart/Metro/...)\n7. 全球区域代理招商       (4 区域：北美 / 欧洲 / 大洋洲 / 中东)\n8. 页脚                  (4 栏：品牌 / 联系 / 地址 / 能力)\n```\n\n**硬性要求：**\n- Hero 图必须 **21:9 比例**。如果用户给方图，先用 AI 扩图到 21:9，**绝对不要硬裁**\n- 数据成就横条的\"年限\"字段用动态公式：`当前年份 - 成立年份`（和阿里\"12 YRS Gold\"标识对齐）\n- Why 卡片都要可点击 → 跳到相关栏目（认证/产品/展会）\n- 客户 Logo 用品牌色文字兜底（外链失败不能露出破图）\n- 页脚**绝不**出现 Alibaba 店铺链接 —— 本站就是品牌，不是供应商展示橱窗\n\n---\n\n## 6. 多语言架构（B2B 品牌必备）\n\n**4 种语言：** `en`（新访客默认）、`zh`、`de`、`es`。\n**为什么是 4 种？** 覆盖全球 B2B 买家 80% 的语种需求（北美+欧洲+西语市场），多了维护成本高。\n\n**数据模型：** 每个面向用户的文本字段都是 `{en: \"\", zh: \"\", de: \"\", es: \"\"}` 结构。helper 函数：\n\n```js\nfunction L(v){\n  if(v && typeof v===\"object\") return v[LANG] || v.en || v.zh || v.de || v.es || \"\";\n  return v || \"\";\n}\n```\n\n**语言切换器：** 折叠下拉（**禁止** 4 个按钮一排 — 占空间、显土）\n\n```\n🇨🇳 中文 ▾\n   ┌──────────────┐\n   │ 🇺🇸 English  │\n   │ 🇨🇳 中文 ✓   │\n   │ 🇩🇪 Deutsch │\n   │ 🇪🇸 Español │\n   └──────────────┘\n```\n\n**URL 强制切换：** `?lang=en|zh|de|es` 强制语言并写入 localStorage（用于二维码定向投放）\n\n**自动翻译**（仅 admin 编辑用）：\n- 主输入框 → 🌐 按钮 → 调谷歌翻译公开端点（无需 key） → 失败降级到 LibreTranslate\n- 自动语种识别（字符正则）：含中文 → zh；含 ñáéí → es；含 äöüß → de；其余 → en\n\n---\n\n## 7. Admin 编辑能力 — 字段级覆盖\n\n每个区块都必须在 `?admin` 模式下可编辑：\n\n| 区块 | 编辑类型 | 字段结构 |\n|---|---|---|\n| Hero 轮播 | 列表（增删排序）| `{img, kicker:{4 语言}, title:{4 语言}, sub:{4 语言}, ctaPrimary:{4 语言}, ctaGhost:{4 语言}}` |\n| 数据成就 | 列表（最多 6 项）| `{value, label:{4 语言}, _auto?:\"years\"}` |\n| Why 卡片 | 列表（增删排序）| `{icon, title:{4 语言}, desc:{4 语言}, cta:{4 语言}, link}` |\n| 产品分类 | 3 项 | `{img, title:{4 语言}, sub:{4 语言}, searchKey}` |\n| 客户 Logo | 列表（增删排序）| `{name, img|file, bg, color}` |\n| 区域代理 | 列表 | `{flag, name:{4 语言}, sub:{4 语言}}` |\n| 区块标题 | 对象 | `{whyTitle, whySub, catsTitle, ..., contact, contactEmail}` |\n| 产品 | 列表 | `{id, name, sku, price, moq, images[], video, specs[], detailImgs[]}` — 见第 8 节 |\n| 资质认证 | 列表 | `{id, title:{4 语言}, desc:{4 语言}, image, verifyUrl, verifyLabel:{4 语言}}` |\n| 展会矩阵 | 列表 + 每个展会 N 届 | 见第 9 节 |\n| 合作品牌 | 列表 | `{name, logo, year, region}` |\n| 话术/情报（内部）| 列表 | `{cat, t, c}` |\n\n**编辑器 UX 铁律（血泪教训）：**\n- ✅ 编辑弹窗每个 item 卡片顶部显示 **缩略图 + 自动派生的标题**（让 admin 一眼分清编辑的是哪个，**绝不只显示 \"#1 #2 #3\" 数字编号**）\n- ✅ 每个多语言字段显示 **1 个主输入框 + 🌐 翻译按钮 + ▾ 展开手动改**（**绝不**一排 4 个输入框 — 看着头晕）\n- ✅ 每个图片字段配 **📤 上传按钮**，上传到 `/uploads/u{时间戳}.{扩展名}`，URL 自动回填\n- ✅ admin 模式下 hover 任何首页区块 → 出现蓝色虚线高亮 + 角落露 ✏️ 按钮\n- ❌ 绝不做行内编辑（contenteditable）— 太脆弱，手机上显示一塌糊涂\n- ❌ 绝不做\"一个弹窗\n\n---\n\n**(内容较长,已截取前 5000 字符 · 完整版请下载文件查看)**",
-      "fileName": "外贸 B2B 品牌官网 + 知识库网站.md",
-      "fileSize": 17416,
-      "fileType": "text/markdown",
-      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/76e4/B2B.md"
-    },
-    {
       "id": "丝袜主图专家-4607",
       "name": "丝袜主图专家",
       "description": "丝袜类主图 6+ 附图技能,细节还原",
@@ -323,32 +249,7 @@
       "fileSize": 19874,
       "fileType": "text/markdown",
       "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/e13d/file.md"
-    },
-    {
-      "id": "海外客户背调全套-89c2",
-      "name": "海外客户背调全套",
-      "description": "海外客户/供应商背调全案,6 大模块编排",
-      "type": "SKILL",
-      "category": "客户背调",
-      "role": "业务主管",
-      "audience": "对客赋能",
-      "tags": [
-        "背调",
-        "全案",
-        "6模块"
-      ],
-      "author": "Bao juan Tang",
-      "version": "v1.0",
-      "cert": "cert-official",
-      "likes": 15,
-      "downloads": 216,
-      "createdAt": "2026-06-24",
-      "content": "> 📄 Markdown 文档 · 打开后可直接查看完整说明\n\n---\n\n---\nname: 海外客户背调全套\ndescription: >-\n  海外客户/供应商背调全案一键工作流（外贸·跨境 B 端尽调）。把\"公开信息采集 → 资质核验 → 风险黑名单筛查 → 商业信用评估 → 多语言舆情 → 尽调报告整合\"6 大模块编排为一条可分级调用的流水线，按客户金额/账期/地区自动选档（轻度/常规/全套/高危），最终产出中英双语、带风险分级与合作建议（预付比例·账期限制）的尽调报告 PDF。\n  Use this skill whenever the user wants to 背调 / 尽调 / 调查 / 核验 / 风控筛查 a foreign company or buyer, asks \"查一下这个客户/供应商\"\"做个背调\"\"这个客户靠不靠谱\"\"这家公司是不是皮包公司\"\"能给多少账期\", pastes a company name / official website / LinkedIn / 邮箱 / 国别 and wants a background check, or mentions 海外客户调查、供应商尽调、买家背调、企业核验、制裁名单筛查、信用评估、客户风险评级. 即便用户只说\"帮我查查这家公司\"或只给了一个公司名/官网链接，也应触发本技能。\n---\n\n# 海外客户背调全案 (Overseas Client Due Diligence)\n\n把一整套海外 B 端尽调流程固化为一条可重复调用的流水线。给一个客户标识（公司名 / 官网 / LinkedIn / 邮箱 / 国别），自动按金额与风险选档，编排 6 个专用模块并行采集与核验，最终交付一份中英双语、带风险分级和合作建议的尽调报告。\n\n## 设计哲学\n\n外贸尽调的本质是**用可获取的公开信息，把\"这个客户能不能合作、用什么条件合作\"这个决策的不确定性压到最低**。真正的风险不是\"信息缺失\"，而是\"把缺失当成了已知\"。所以本技能的铁律是：**能查实的下结论，查不到的明确标\"待人工补充\"，绝不用推测填充空白冒充事实。**\n\n## 能力边界（先声明，再动手）\n\n每次执行前，先对用户言明哪些能真做、哪些受限于付费数据源。这不是免责，而是让用户知道报告里哪些结论是硬证据、哪些是间接推断。\n\n| 模块 | 可落地程度 | 缺口说明 |\n|---|---|---|\n| ① 公开信息采集 | 大部分可做 | 官网/LinkedIn/FB/IG/whois/免费注册局可抓；**海关进出口记录**靠 ImportGenius/Panjiva 付费库，无接口，只能公开估算并标注 |\n| ② 资质核验 | 部分可做 | 欧盟 VAT（VIES）✅、FDA✅、CE/ISO 查发证机构✅；美国 IRS 税号无公开校验❌、**离岸实控人穿透（BVI/开曼）不公开**❌ |\n| ③ 风险黑名单 | 可做且可靠 | OFAC SDN、欧盟/联合国制裁名单公开可查；部分国家失信/破产记录公开 |\n| ④ 商业信用 | 受限 | 邓白氏/Equifax 为付费征信，无账号；只能用营收规模、纳税公开数据做间接判断，**给不出正式信用分** |\n| ⑤ 舆情社媒 | 可做 | Trustpilot、Google 评论、论坛、社媒活跃度 + 多语种情感分析 |\n| ⑥ 报告整合 | 可做 | 多源去重交叉校验 + 风险分级 + 中英双语导出 |\n\n**三个硬缺口固定标注\"待人工补充（需付费库）\"**：海关进出口明细、付费征信信用分、离岸公司实控人穿透。\n\n## 第一步：解析输入，确认档位\n\n从用户输入中提取客户标识。最少需要一个锚点（公司名 / 官网域名 / LinkedIn URL / 业务邮箱 / 国别其一）。锚点越多，交叉校验越准。\n\n如果用户没说档位，按金额/账期/地区自动建议，并向用户一句话确认：\n\n| 档位 | 适用场景 | 启用模块 |\n|---|---|---|\n| **轻度** | 小额新客户、首单试探 | ① 采集 + ⑤ 舆情 + ⑥ 报告 |\n| **常规** | 标准外贸客户、常规订单 | ① 采集 + ② 资质 + ⑤ 舆情 + ⑥ 报告 |\n| **全套** | 大额订单 / 长期代理 / 大额账期 | ①②③④⑤⑥ 全开 |\n| **高危地区** | 中东 / 非洲 / 拉美客户 | ③ 风控 + ② 资质（实控穿透优先）打头，再 ①⑤⑥ |\n\n> 主公默认偏好「全套」档位用于大额/长账期。无明确说明时，对大额或长账期客户默认走全套。\n\n确认锚点与档位后，**不要再追问无关细节**，直接进入编排。\n\n## 第二步：编排执行（并行优先）\n\n按所选档位，用 `sessions_spawn` 并行启动对应模块（每个模块一个子代理，互相独立、各自自带锚点）。模块细则见 `references/modules.md`，执行前按需读取对应章节。\n\n并行原则：①②③④⑤ 之间无依赖，应在同一轮全部 spawn 出去；⑥ 报告整合依赖前序结果，最后执行。\n\n每个子代理的 task 必须自带：客户全部锚点、本模块的目标产出字段、数据源清单（见 modules.md）、\"查不到就标待补充、严禁编造\"的硬约束、以及把结果以结构化 markdown 返回。\n\n子代理类型选择：\n- 公开网页采集 / 制裁名单查询 / 舆情抓取 → `general`（可 web + browser + 文件）\n- 登录态/JS 重渲染页面（如部分注册局、社媒后台）→ `browser`\n- 纯检索核验（VIES、FDA、whois）→ `general` 或 `bash`（accio-mcp-cli / curl）\n\n## 第三步：交叉校验与缺口盘点\n\n所有模块返回后，先做一致性校验再写报告：\n- **同一字段多源比对**：地址 / 成立时间 / 法人 / 经营范围在官网、注册局、LinkedIn 是否一致；不一致是重要风险信号，必须在报告里点名。\n- **去重**：合并重复信息，保留最权威来源（注册局 > 官网 > 社媒）。\n- **缺口清单**：列出所有\"查不到\"的字段，区分\"客观不公开（需付费库）\"与\"本次未查到（可再查）\"。\n\n## 第四步：风险分级与合作建议\n\n按 `references/report-template.md` 的评级矩阵给出 **低 / 中 / 高** 三级，并附**可执行的合作建议**（预付比例、账期上限、是否需信用证/担保）。评级必须有证据支撑——每一级背后列明触发该评级的具体事实。\n\n## 第五步：输出报告\n\n按 `references/report-template.md` 生成**中英双语**尽调报告。文档规范（主公红线）：\n- 字体「微软雅黑」，正文左对齐；\n- 严禁红色字体、emoji、ASCII 树状图；\n- 风险等级用文字标注（低/中/高 Low/Medium/High），不用色块或图标；\n- **优先导出 PDF**（涉及 Word/Excel/PDF 文档操作时，调度 `office-suite` 子代理，主流程不自行用脚本处理 .docx/.pdf）。\n\n报告产出后，在对话里给一句话结论（评级 + 核心建议）+ 文件链接，不要把全文倒进聊天。\n\n## 执行纪律\n\n- **边界先行**：每次开工先声明本次能覆盖什么、缺什么，再动手。\n- **证据优先**：所有结论可溯源；推断必须标\"推断\"。\n- **缺口透明**：三个硬缺口固定标注，不假装有数据。\n- **不过度采集**：按档位启用模块，轻度客户别全套上，省时省力。\n- **熔断**：同一模块换关键词搜索 3 次仍无果，停止并在缺口清单标注，不死磕。\n",
-      "fileName": "海外客户背调全套skill.md",
-      "fileSize": 7066,
-      "fileType": "text/markdown",
-      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/89c2/skill.md"
     }
   ],
-  "updatedAt": "2026-07-24T08:47:39.055Z"
+  "updatedAt": "2026-07-24T08:48:38.199Z"
 }
