@@ -219,7 +219,7 @@
     },
     {
       "id": "okki-pro-xhtl",
-      "name": "OKKI Pro订单守门员 ",
+      "name": "主管-OKKI Pro订单守门员 ",
       "description": "面向 OKKI Pro 版本客户的\"签约后订单+毛利\"全链路守门技能。潜入你自己的 OKKI Pro 后台,自动锁定\"合同确认→生产→物流\"三个阶段的在途订单,揪出回款拖延/生产停滞/交期风险的高危订单,同时按业务员维度扫毛利健康度,识别\"低毛利大金额\"\"毛利偏差超预算\"两类问题订单,最后按业务员出一份订单-毛利责任榜。适用于 OKKI Pro 版本外贸公司管理者的每日/每周订单执行力复盘、毛利红线预警、业务员绩效追踪等场景。所有交付物在对话中呈现,同时输出一份财务口径 Excel 供开会使用。",
       "type": "SKILL",
       "category": "OKKI",
@@ -236,7 +236,8 @@
       "fileName": "主管-OKKI Pro订单守门员 .zip",
       "fileSize": 16657,
       "fileType": "application/zip",
-      "fileUrl": "./data/files/okki-pro-xhtl/OKKI-Pro.zip"
+      "fileUrl": "./data/files/okki-pro-xhtl/OKKI-Pro.zip",
+      "updatedAt": "2026-07-24"
     },
     {
       "id": "okki-klhj",
@@ -260,5 +261,5 @@
       "fileUrl": "./data/files/okki-klhj/OKKI_clean.zip"
     }
   ],
-  "updatedAt": "2026-07-24T15:59:01.111Z"
+  "updatedAt": "2026-07-24T15:59:26.518Z"
 }
