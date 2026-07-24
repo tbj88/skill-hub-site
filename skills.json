@@ -176,7 +176,29 @@
       "fileSize": 11896,
       "fileType": "text/markdown",
       "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/70ee/alibaba-product-publish.md"
+    },
+    {
+      "id": "aireach-bpg2",
+      "name": "业务-AiReach跟进助手",
+      "description": "一键把 AiReach 挖到的新客户\"领出来 → 查一遍官网 → 写好开发信 → 整理成 Excel\"的跟进助手。它会自动去 OKKI 后台领取最新交付的客户,潜入对方官网找\"钩子\",然后用极具\"人味儿\"的语气(拒绝 AI 模板腔)写出高度个性化的开发信,并整理成 Excel 表格交给你或助理直接发送。支持多语言(法/西/英),自动对已领过的客户去重防重复。\n",
+      "type": "SKILL",
+      "category": "OKKI",
+      "role": "业务",
+      "audience": "对客赋能",
+      "tags": [],
+      "author": "陶磊",
+      "version": "v1.0",
+      "cert": "none",
+      "likes": 0,
+      "downloads": 0,
+      "createdAt": "2026-07-24",
+      "content": "## 核心功能\n1. **自动领人与去重**:自动从 OKKI 后台抓取 AiReach 新交付的客户,并对比本地黑名单防止重复领取。\n2. **官网深度踩点**:调用 browser 访问每个客户官网,提取核心业务词/主打产品/视觉风格,寻找个性化切入点。\n3. **随性自然开发信**:拒绝僵硬模板,根据调研结果用多国语言(法/西/英)撰写极具\"真人手写感\"的开发信。\n4. **Excel 清单交付**:将公司名、邮箱、主题、正文一并整理进标准 Excel 文件,方便团队直接操作。",
+      "fileName": "业务-AiReach跟进助手 .zip",
+      "fileSize": 10770,
+      "fileType": "application/zip",
+      "fileUrl": "./data/files/aireach-bpg2/AiReach.zip",
+      "updatedAt": "2026-07-24"
     }
   ],
-  "updatedAt": "2026-07-24T15:17:30.186Z"
+  "updatedAt": "2026-07-24T15:24:27.413Z"
 }
