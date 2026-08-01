@@ -92,6 +92,19 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 .small-link { font-size: 12px; color: var(--blue); cursor: pointer; }
 .small-link:hover { opacity: .8; }
 input[type="file"] { font-size: 13px; }
+
+.layout { display: flex; gap: 20px; }
+.sidebar { width: 220px; flex-shrink: 0; }
+.sidebar-section { margin-bottom: 20px; }
+.sidebar-title { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--sub); margin-bottom: 8px; letter-spacing: .5px; }
+.sidebar-pill { display: block; width: 100%; text-align: left; padding: 6px 10px; border-radius: 6px; font-size: 13px; cursor: pointer; border: none; background: none; color: var(--text); margin-bottom: 2px; transition: .1s; }
+.sidebar-pill:hover { background: #f1f5f9; }
+.sidebar-pill.active { background: var(--blue-light); color: var(--blue); font-weight: 600; }
+.sidebar-pill .count { float: right; font-size: 11px; color: var(--sub); }
+.main-area { flex: 1; min-width: 0; }
+.copy-link-box { display: flex; gap: 6px; margin-bottom: 16px; align-items: center; }
+.copy-link-box input { flex: 1; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 12px; background: #f8fafc; color: var(--sub); }
+.btn-sm { font-size: 12px; padding: 5px 10px; }
 </style>
 </head>
 <body>
@@ -113,7 +126,7 @@ input[type="file"] { font-size: 13px; }
       <option value="对客赋能">对客赋能</option>
       <option value="对内提效">对内提效</option>
     </select>
-    <span id="tokenStatus" style="font-size:11px"></span>
+    <button class="btn btn-outline btn-sm" id="btnCopyLink" style="display:none" onclick="copyClientLink()">&#128279; 对客版链接</button>
     <button class="btn btn-blue" id="btnUpload" style="display:none" onclick="openUpload()">+ 上传技能</button>
   </div>
 </nav>
@@ -130,7 +143,17 @@ input[type="file"] { font-size: 13px; }
 
 <div class="container">
   <div id="statusBar" class="status-bar status-ok">加载中...</div>
-  <div class="grid" id="skillGrid"><div class="spinner"></div></div>
+  <div id="copyLinkBox" class="copy-link-box" style="display:none">
+    <span style="font-size:12px;white-space:nowrap">&#128279; 对客版:</span>
+    <input id="clientLinkInput" readonly value="" onclick="this.select()">
+    <button class="btn btn-outline btn-sm" onclick="copyClientLink()">复制</button>
+  </div>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar"></aside>
+    <div class="main-area">
+      <div class="grid" id="skillGrid"><div class="spinner"></div></div>
+    </div>
+  </div>
 </div>
 
 <!-- Detail Modal -->
@@ -154,7 +177,9 @@ const REPO = 'tbj88/skill-hub-site';
 const BRANCH = 'main';
 const API_BASE = 'https://api.github.com/repos/' + REPO;
 let skills = [];
+let categories = [];
 let isAdmin = false, isGuest = false;
+let selRole = '', selCat = '';
 
 // ===== URL & Mode =====
 function parseURL() {
@@ -256,6 +281,8 @@ function render() {
   let filtered = [...skills];
   if (isGuest) filtered = filtered.filter(s => (s.audience || '').trim() === '对客赋能');
   if (af !== 'all') filtered = filtered.filter(s => s.audience === af);
+  if (selRole) filtered = filtered.filter(s => s.role === selRole);
+  if (selCat) filtered = filtered.filter(s => s.category === selCat);
   if (q) {
     filtered = filtered.filter(s =>
       (s.name||'').toLowerCase().includes(q) || (s.description||'').toLowerCase().includes(q) ||
@@ -263,13 +290,18 @@ function render() {
   }
   filtered.sort((a,b) => (b.createdAt||'').localeCompare(a.createdAt||''));
 
+  // Stats
   document.getElementById('statTotal').textContent = filtered.length;
   document.getElementById('statDown').textContent = filtered.reduce((s,x)=>s+(x.downloads||0),0);
   document.getElementById('statAuth').textContent = new Set(filtered.map(s=>s.author).filter(Boolean)).size;
   document.getElementById('adminBadge').style.display = isAdmin ? 'inline' : 'none';
   document.getElementById('guestBadge').style.display = isGuest ? 'inline' : 'none';
   document.getElementById('btnUpload').style.display = isAdmin && hasToken() ? 'inline-flex' : 'none';
+  document.getElementById('btnCopyLink').style.display = isAdmin ? 'inline-flex' : 'none';
+  document.getElementById('copyLinkBox').style.display = isAdmin ? 'flex' : 'none';
+  document.getElementById('clientLinkInput').value = location.origin + location.pathname + '?view=guest&pass=tangbaojuan#/';
 
+  // Status bar
   const sb = document.getElementById('statusBar');
   if (isAdmin && hasToken()) {
     sb.className = 'status-bar status-ok';
@@ -285,6 +317,10 @@ function render() {
     sb.textContent = '共 ' + filtered.length + ' 个技能';
   }
 
+  // Build sidebar
+  buildSidebar();
+
+  // Grid
   const grid = document.getElementById('skillGrid');
   if (!filtered.length) { grid.innerHTML = '<div class="empty"><p style="font-size:40px">&#128269;</p><p>没有找到技能</p></div>'; return; }
 
@@ -458,7 +494,83 @@ async function deleteSkill(id) {
 function showAll() {
   document.getElementById('searchInput').value = '';
   document.getElementById('audienceFilter').value = 'all';
+  selRole = ''; selCat = '';
   render();
+}
+
+function copyClientLink() {
+  const url = location.origin + location.pathname + '?view=guest&pass=tangbaojuan#/';
+  navigator.clipboard.writeText(url).then(() => showToast('对客版链接已复制')).catch(() => {
+    const inp = document.getElementById('clientLinkInput');
+    inp.select(); document.execCommand('copy'); showToast('已复制');
+  });
+}
+
+function buildSidebar() {
+  const base = isGuest ? skills.filter(s => (s.audience||'').trim()==='对客赋能') : skills;
+
+  // Role counts
+  const roleMap = {};
+  base.forEach(s => { const r = s.role || '未分类'; roleMap[r] = (roleMap[r]||0) + 1; });
+  const roles = Object.entries(roleMap).sort((a,b) => b[1]-a[1]);
+
+  // Category counts
+  const catData = {};
+  base.forEach(s => { const c = s.category || '其他'; catData[c] = (catData[c]||0) + 1; });
+  const cats = Object.entries(catData).sort((a,b) => b[1]-a[1]);
+
+  // Use categories.json groups if available
+  let catGroups = [];
+  if (categories.length) {
+    catGroups = categories.map(g => ({
+      label: (g.emoji||'') + ' ' + g.label,
+      items: g.items.filter(i => catData[i]).map(i => ({ name: i, count: catData[i] }))
+    })).filter(g => g.items.length);
+    // Add uncategorized
+    const grouped = new Set(catGroups.flatMap(g => g.items.map(i => i.name)));
+    const other = cats.filter(([n]) => !grouped.has(n));
+    if (other.length) catGroups.push({ label: '其他', items: other.map(([n,c]) => ({name:n,count:c})) });
+  } else {
+    catGroups = [{ label: '全部分类', items: cats.map(([n,c]) => ({name:n,count:c})) }];
+  }
+
+  // Sidebar HTML
+  const el = document.getElementById('sidebar');
+  if (isGuest) {
+    // Guest: hide sidebar, they only see 对客赋能
+    el.innerHTML = '<div style="padding:12px;font-size:12px;color:var(--sub)">展示全部对客赋能技能</div>';
+    return;
+  }
+
+  let html = '';
+
+  // Role section
+  html += '<div class="sidebar-section">';
+  html += '<div class="sidebar-title">按角色</div>';
+  html += `<button class="sidebar-pill${!selRole?' active':''}" onclick="selRole='';render()">全部<span class="count">${base.length}</span></button>`;
+  roles.forEach(([r,c]) => {
+    html += `<button class="sidebar-pill${selRole===r?' active':''}" onclick="document.getElementById('searchInput').value='';selRole='${esc(r)}';selCat='';render()">${esc(r)}<span class="count">${c}</span></button>`;
+  });
+  html += '</div>';
+
+  // Category section
+  html += '<div class="sidebar-section">';
+  html += '<div class="sidebar-title">按分类</div>';
+  html += `<button class="sidebar-pill${!selCat?' active':''}" onclick="selCat='';render()">全部<span class="count">${base.length}</span></button>`;
+  catGroups.forEach(g => {
+    html += `<div style="font-size:11px;font-weight:600;color:var(--sub);padding:6px 10px 2px">${esc(g.label)}</div>`;
+    g.items.forEach(i => {
+      html += `<button class="sidebar-pill${selCat===i.name?' active':''}" onclick="document.getElementById('searchInput').value='';selCat='${esc(i.name)}';selRole='';render()">${esc(i.name)}<span class="count">${i.count}</span></button>`;
+    });
+  });
+  html += '</div>';
+
+  // Clear filter
+  if (selRole || selCat) {
+    html += '<button class="btn btn-ghost btn-sm" style="width:100%;margin-top:8px" onclick="showAll()">&#10005; 清空筛选</button>';
+  }
+
+  el.innerHTML = html;
 }
 
 // ===== Helpers =====
@@ -486,8 +598,11 @@ if (isGuest) {
 
 loadSkills().then(data => {
   skills = data;
+  return fetch('./categories.json?t=' + Date.now(), {cache:'no-store'}).then(r => r.json()).catch(() => []);
+}).then(catData => {
+  categories = catData;
   render();
-  console.log('[SkillHub v3] Loaded ' + skills.length + ' skills');
+  console.log('[SkillHub v3] Loaded ' + skills.length + ' skills, ' + categories.length + ' categories');
 }).catch(err => {
   document.getElementById('skillGrid').innerHTML = '<div class="empty"><p style="font-size:40px">&#9888;</p><p>加载失败</p><p style="font-size:11px">' + esc(err.message) + '</p></div>';
   document.getElementById('statusBar').className = 'status-bar status-warn';
