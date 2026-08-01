@@ -1,9 +1,9 @@
 {
   "skills": [
     {
-      "id": "业务-T-知识库200问答对生成-i9rp",
+      "id": "业务-T-知识库200问答对生成-c386",
       "name": "业务-T 知识库200问答对生成",
-      "description": "阿里巴巴国际站供应商 AI 私域知识库一键生成技能。给个店铺链接，它就自动潜入你的店、\n  全网把你的底细摸清楚（官网、领英、展会、认证全挖一遍），然后帮你写出 200 条专业又\n  有销售力的中英双语问答（QA）。把这套喂给阿里后台的 AI 生意助手，你的 AI 就能像个\n  干了十年的老业务，24 小时在线接客，专业不掉链子。还会自动列出哪些信息网上查不到、\n  需要你手动补，确保知识库一个死角都没有。\n  触发关键词：知识库、QA、问答库、问答对、AI生意助手、智能接待训练、私域知识库、\n  国际站知识库、供应商知识库、200问、alibaba KB。\n  适用场景：用户给出国际站供应商链接（alibaba.com / xxx.en.alibaba.com），\n  要生成可直接上传到 AI 生意助手后台的标准化知识库时触发。",
+      "description": "",
       "type": "SKILL",
       "category": "企业知识库",
       "role": "业务",
@@ -19,15 +19,15 @@
       "fileName": "业务-T 知识库200问答对生成.zip",
       "fileSize": 70293,
       "fileType": "application/zip",
-      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/对生成-i9rp/业务-T-知识库200问答对生成___-T____200_____.zip",
+      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/对生成-c386/业务-T-知识库200问答对生成___-T____200_____.zip",
       "updatedAt": "2026-08-01"
     },
     {
-      "id": "业务-T-知识库200问答对生成-zs7q",
-      "name": "业务-T 知识库200问答对生成",
-      "description": "阿里巴巴国际站供应商 AI 私域知识库一键生成技能。给个店铺链接，它就自动潜入你的店、\n  全网把你的底细摸清楚（官网、领英、展会、认证全挖一遍），然后帮你写出 200 条专业又\n  有销售力的中英双语问答（QA）。把这套喂给阿里后台的 AI 生意助手，你的 AI 就能像个\n  干了十年的老业务，24 小时在线接客，专业不掉链子。还会自动列出哪些信息网上查不到、\n  需要你手动补，确保知识库一个死角都没有。\n  触发关键词：知识库、QA、问答库、问答对、AI生意助手、智能接待训练、私域知识库、\n  国际站知识库、供应商知识库、200问、alibaba KB。\n  适用场景：用户给出国际站供应商链接（alibaba.com / xxx.en.alibaba.com），\n  要生成可直接上传到 AI 生意助手后台的标准化知识库时触发。",
+      "id": "业务-RFQ-智能扫描专家-xtad",
+      "name": "业务-RFQ 智能扫描专家",
+      "description": "**触发条件**：当用户输入的第一句话中包含以下任一信号时，立即激活引导流程：\n- **意图关键词**：「RFQ」「筛选 RFQ」「推荐 RFQ」「找询盘」「扫描商机」「采购直达」等。\n- **产品关键词**：任何具体的产品名称或品类（如「袜子」「徽章」「LED 灯」等）。",
       "type": "SKILL",
-      "category": "企业知识库",
+      "category": "RFQ",
       "role": "业务",
       "audience": "对客赋能",
       "tags": [],
@@ -38,10 +38,10 @@
       "downloads": 0,
       "createdAt": "2026-08-01",
       "content": "",
-      "fileName": "业务-T 知识库200问答对生成.zip",
-      "fileSize": 70293,
+      "fileName": "业务-RFQ 智能扫描专家.zip",
+      "fileSize": 187382,
       "fileType": "application/zip",
-      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/对生成-zs7q/业务-T-知识库200问答对生成___-T____200_____.zip",
+      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/描专家-xtad/业务-RFQ-智能扫描专家___-RFQ_______.zip",
       "updatedAt": "2026-08-01"
     },
     {
@@ -349,5 +349,5 @@
       "updatedAt": "2026-08-01"
     }
   ],
-  "updatedAt": "2026-08-01T14:44:44.332Z"
+  "updatedAt": "2026-08-01T14:46:14.707Z"
 }
