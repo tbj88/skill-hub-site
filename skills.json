@@ -5,12 +5,10 @@
       "name": "美工-T 国际站详情制作",
       "description": "用户消息包含「详情制作 / 做详情 / 制作详情 / 详情图 / 8模块详情」之一，且提供了产品（图片 / 链接 / 名称）→ 立即按本流程执行。",
       "type": "SKILL",
-      "category": "电商图片",
+      "category": "",
       "role": "美工",
       "audience": "对客赋能",
-      "tags": [
-        "详情图片"
-      ],
+      "tags": [],
       "author": "Bao juan Tang",
       "version": "v1.0",
       "cert": "none",
@@ -300,12 +298,12 @@
       "downloads": 0,
       "createdAt": "2026-08-01",
       "content": "",
-      "fileName": "",
-      "fileSize": 0,
-      "fileType": "",
+      "fileName": "美工-T 国际站主图6+标题.zip",
+      "fileSize": 8643,
+      "fileType": "application/zip",
       "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/t-6-g7lm/美工-T-国际站主图6-标题___-T______6___.zip",
       "updatedAt": "2026-08-01"
     }
   ],
-  "updatedAt": "2026-08-01T14:11:16.540Z"
+  "updatedAt": "2026-08-01T14:12:31.869Z"
 }
