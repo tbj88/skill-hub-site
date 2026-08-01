@@ -514,10 +514,9 @@ async function submitSkill(existingId) {
   try {
     await saveSkillsToGitHub(skills);
     closeUpload();
-    await loadSkills().then(d => { skills = d; });
     render();
-    alert(existingId ? '已保存！1-2分钟后页面自动刷新' : '已发布！1-2分钟后页面自动刷新');
-    location.reload();
+    if (saveBtn) { saveBtn.disabled = false; saveBtn.textContent = existingId ? '保存修改' : '提交上传'; }
+    alert(existingId ? '保存成功！' : '发布成功！');
   } catch(e) {
     if (saveBtn) { saveBtn.disabled = false; saveBtn.textContent = existingId ? '保存修改' : '提交上传'; }
     alert('保存失败: ' + e.message);
