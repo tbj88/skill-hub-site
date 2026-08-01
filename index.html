@@ -215,35 +215,47 @@ async function ghGet(path) {
 }
 
 async function ghPut(path, content, message) {
-  // Get current SHA
-  let sha = '';
-  try { const d = await ghGet(path); sha = d.sha; } catch(e) {}
-  const body = { message, content: btoa(unescape(encodeURIComponent(content))), branch: BRANCH };
-  if (sha) body.sha = sha;
-  const r = await fetch(API_BASE + '/contents' + path, {
-    method: 'PUT',
-    headers: { Authorization: 'token ' + getToken(), Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
-    body: JSON.stringify(body)
-  });
-  if (!r.ok) {
+  for (let retry = 0; retry < 5; retry++) {
+    let sha = '';
+    try { const d = await ghGet(path); sha = d.sha; } catch(e) {}
+    const body = { message, content: btoa(unescape(encodeURIComponent(content))), branch: BRANCH };
+    if (sha) body.sha = sha;
+    const r = await fetch(API_BASE + '/contents' + path, {
+      method: 'PUT',
+      headers: { Authorization: 'token ' + getToken(), Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    if (r.ok) return r.json();
+    if (r.status === 409 || r.status === 422) {
+      await new Promise(resolve => setTimeout(resolve, 500 + retry * 500));
+      continue;
+    }
     const e = await r.text();
-    throw new Error('GitHub API PUT failed: ' + r.status + ' ' + e.slice(0,200));
+    throw new Error('GitHub API PUT failed: ' + r.status + ' ' + e.slice(0, 200));
   }
-  return r.json();
+  throw new Error('保存失败: 版本冲突，请刷新后重试');
 }
 
 async function ghPutBinary(path, base64Content, message) {
-  let sha = '';
-  try { const d = await ghGet(path); sha = d.sha; } catch(e) {}
-  const body = { message, content: base64Content, branch: BRANCH };
-  if (sha) body.sha = sha;
-  const r = await fetch(API_BASE + '/contents' + path, {
-    method: 'PUT',
-    headers: { Authorization: 'token ' + getToken(), Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
-    body: JSON.stringify(body)
-  });
-  if (!r.ok) { const e = await r.text(); throw new Error('Upload failed: ' + r.status + ' ' + e.slice(0,200)); }
-  return r.json();
+  for (let retry = 0; retry < 5; retry++) {
+    let sha = '';
+    try { const d = await ghGet(path); sha = d.sha; } catch(e) {}
+    const body = { message, content: base64Content, branch: BRANCH };
+    if (sha) body.sha = sha;
+    const r = await fetch(API_BASE + '/contents' + path, {
+      method: 'PUT',
+      headers: { Authorization: 'token ' + getToken(), Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    if (r.ok) return r.json();
+    if (r.status === 409 || r.status === 422) {
+      await new Promise(resolve => setTimeout(resolve, 500 + retry * 500));
+      continue;
+    }
+    const e = await r.text();
+    throw new Error('Upload failed: ' + r.status + ' ' + e.slice(0, 200));
+  }
+  throw new Error('上传失败: 版本冲突，请刷新后重试');
 }
 
 // ===== Data =====
@@ -470,9 +482,10 @@ async function submitSkill(existingId) {
     await saveSkillsToGitHub(skills);
     closeUpload();
     render();
-    showToast(existingId ? '技能已更新' : '技能已发布');
+    showToast(existingId ? '技能已更新（1-2分钟后生效）' : '技能已发布（1-2分钟后生效）');
   } catch(e) {
     showToast('保存失败: ' + e.message);
+    console.error('[SkillHub] Save error:', e);
   }
 }
 
