@@ -443,10 +443,14 @@ function openEdit(id) { closeDetail(); openUpload(id); }
 function closeUpload() { const m = document.getElementById('uploadModal'); m.classList.remove('open'); m.style.display = 'none'; }
 
 async function submitSkill(existingId) {
-  if (!hasToken()) { showToast('请先配置 GitHub Token'); return; }
+  if (!hasToken()) { alert('请先配置 GitHub Token'); return; }
 
   const name = document.getElementById('fName').value.trim();
-  if (!name) { showToast('技能名称不能为空'); return; }
+  if (!name) { alert('技能名称不能为空'); return; }
+
+  // Disable button during save
+  const saveBtn = document.querySelector('#uploadBody .btn-brand');
+  if (saveBtn) { saveBtn.disabled = true; saveBtn.textContent = '保存中...'; }
 
   const desc = document.getElementById('fDesc').value.trim();
   const audience = document.getElementById('fAudience').value;
@@ -476,14 +480,13 @@ async function submitSkill(existingId) {
       reader.onerror = reject;
       reader.readAsDataURL(file);
     });
-    try {
-      await ghPutBinary(path, base64, 'upload: ' + fileName + ' for ' + name);
-      fileUrl = 'https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + path;
-      showToast('文件上传成功');
-    } catch(e) {
-      showToast('文件上传失败: ' + e.message);
-      return;
-    }
+  try {
+    await ghPutBinary(path, base64, 'upload: ' + fileName + ' for ' + name);
+    fileUrl = 'https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + path;
+  } catch(e) {
+    alert('文件上传失败: ' + e.message);
+    return;
+  }
   }
 
   const skill = {
@@ -513,8 +516,10 @@ async function submitSkill(existingId) {
     closeUpload();
     await loadSkills().then(d => { skills = d; });
     render();
-    showToast(existingId ? '已保存！1-2分钟后生效' : '已发布！1-2分钟后生效');
+    alert(existingId ? '已保存！1-2分钟后页面自动刷新' : '已发布！1-2分钟后页面自动刷新');
+    location.reload();
   } catch(e) {
+    if (saveBtn) { saveBtn.disabled = false; saveBtn.textContent = existingId ? '保存修改' : '提交上传'; }
     alert('保存失败: ' + e.message);
     console.error('[SkillHub] Save error:', e);
   }
