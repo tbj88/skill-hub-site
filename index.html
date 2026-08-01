@@ -1,14 +1,351 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>技能中心 · AI 技能资产库</title>
-    <script type="module" crossorigin src="./assets/index-BRXZ684Y.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CVBjzm01.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>技能中心 · AI 技能资产库</title>
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+<style>
+:root {
+  --bg: #f1f5f9;
+  --card: #fff;
+  --text: #0f172a;
+  --sub: #64748b;
+  --blue: #2563eb;
+  --blue-light: #eff6ff;
+  --green: #16a34a;
+  --green-bg: #f0fdf4;
+  --orange: #ea580c;
+  --orange-bg: #fff7ed;
+  --purple: #7c3aed;
+  --purple-bg: #f5f3ff;
+  --border: #e2e8f0;
+  --radius: 12px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+.nav { background: #fff; border-bottom: 1px solid var(--border); padding: 0 24px; height: 56px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+.nav-left { display: flex; align-items: center; gap: 8px; }
+.logo { width: 28px; height: 28px; background: var(--blue); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 16px; }
+.nav-title { font-size: 16px; font-weight: 600; }
+.nav-sub { font-size: 11px; color: var(--sub); }
+.nav-right { display: flex; align-items: center; gap: 8px; }
+.badge { font-size: 11px; padding: 2px 8px; border-radius: 99px; font-weight: 500; }
+.badge-admin { background: var(--green-bg); color: var(--green); }
+.badge-guest { background: var(--purple-bg); color: var(--purple); }
+.btn { border: none; cursor: pointer; font-size: 13px; padding: 6px 14px; border-radius: 8px; font-weight: 500; transition: .15s; }
+.btn-blue { background: var(--blue); color: #fff; }
+.btn-blue:hover { opacity: .9; }
+.btn-outline { background: var(--blue-light); color: var(--blue); border: 1px solid #bfdbfe; }
+.btn-outline:hover { background: #dbeafe; }
+.btn-ghost { background: transparent; color: var(--sub); }
+.btn-ghost:hover { color: var(--text); }
+
+.hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%); padding: 48px 24px 32px; text-align: center; color: #fff; }
+.hero-tag { display: inline-block; background: rgba(255,255,255,.12); border-radius: 99px; padding: 4px 14px; font-size: 12px; margin-bottom: 12px; }
+.hero h1 { font-size: 32px; font-weight: 700; margin-bottom: 6px; }
+.hero h1 span { color: #93c5fd; }
+.hero p { font-size: 14px; color: #94a3b8; max-width: 500px; margin: 0 auto 20px; }
+.stats { display: flex; justify-content: center; gap: 24px; margin-top: 24px; }
+.stat { background: rgba(255,255,255,.08); border-radius: 10px; padding: 16px 28px; min-width: 120px; }
+.stat-num { font-size: 28px; font-weight: 700; }
+.stat-label { font-size: 12px; color: #94a3b8; margin-top: 2px; }
+
+.container { max-width: 1280px; margin: 0 auto; padding: 24px; }
+.filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.filter-bar input { flex: 1; min-width: 200px; padding: 8px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; outline: none; }
+.filter-bar input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
+.filter-bar select { padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; background: #fff; outline: none; cursor: pointer; }
+.status-bar { padding: 8px 16px; border-radius: 8px; font-size: 12px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+.status-ok { background: var(--green-bg); color: var(--green); }
+.status-warn { background: var(--orange-bg); color: var(--orange); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
+.card { background: var(--card); border-radius: var(--radius); border: 1px solid var(--border); padding: 20px; transition: .15s; cursor: pointer; }
+.card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.06); border-color: #cbd5e1; }
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+.card-title { font-size: 15px; font-weight: 600; line-height: 1.4; }
+.card-desc { font-size: 13px; color: var(--sub); margin-bottom: 10px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.card-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.tag { font-size: 10px; padding: 2px 7px; border-radius: 99px; font-weight: 500; white-space: nowrap; }
+.tag-audience { background: var(--blue-light); color: var(--blue); }
+.tag-internal { background: var(--purple-bg); color: var(--purple); }
+.tag-role { background: #f0fdf4; color: var(--green); }
+.tag-cat { background: #fff7ed; color: var(--orange); }
+.card-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
+.card-footer-left { font-size: 11px; color: var(--sub); display: flex; gap: 10px; }
+.card-footer-right { font-size: 11px; color: var(--sub); }
+
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 200; align-items: center; justify-content: center; }
+.modal-overlay.open { display: flex; }
+.modal { background: #fff; border-radius: 14px; max-width: 680px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 28px; }
+.modal h2 { font-size: 18px; margin-bottom: 12px; }
+.modal-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.modal-content { background: #f8fafc; border-radius: 8px; padding: 16px; font-size: 13px; line-height: 1.7; white-space: pre-wrap; max-height: 300px; overflow-y: auto; color: #334155; }
+.modal-actions { display: flex; gap: 8px; margin-top: 16px; justify-content: flex-end; }
+
+.toast { position: fixed; bottom: 20px; right: 20px; background: #1e293b; color: #fff; padding: 10px 18px; border-radius: 8px; font-size: 13px; z-index: 300; opacity: 0; transition: .3s; pointer-events: none; }
+.toast.show { opacity: 1; }
+
+.empty { text-align: center; padding: 60px 20px; color: var(--sub); }
+.empty-icon { font-size: 40px; margin-bottom: 10px; }
+.spinner { width: 24px; height: 24px; border: 3px solid #e2e8f0; border-top-color: var(--blue); border-radius: 50%; animation: spin .6s linear infinite; margin: 40px auto; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.copy-link { font-size: 11px; color: var(--blue); cursor: pointer; margin-left: 8px; }
+.copy-link:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-left">
+    <div class="logo">S</div>
+    <div>
+      <div class="nav-title">技能中心</div>
+      <div class="nav-sub">AI 技能资产库</div>
+    </div>
+    <span class="badge badge-admin" id="adminBadge" style="display:none">管理员</span>
+    <span class="badge badge-guest" id="guestBadge" style="display:none">对客视图</span>
+  </div>
+  <div class="nav-right">
+    <input type="text" id="searchInput" placeholder="搜索技能..." style="padding:6px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;width:180px;outline:none">
+    <select id="audienceFilter" style="padding:6px 10px;border:1px solid var(--border);border-radius:8px;font-size:12px;background:#fff">
+      <option value="all">全部</option>
+      <option value="对客赋能">对客赋能</option>
+      <option value="对内提效">对内提效</option>
+    </select>
+    <span id="tokenStatus" style="font-size:11px;color:var(--sub)"></span>
+    <button class="btn btn-outline" id="btnClear" style="display:none">清空筛选</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">浙江大区 AI 创客大赛</div>
+  <h1>AI 技能 <span>资产库</span></h1>
+  <p>汇聚团队智慧，共建共享优质 AI 技能，打造浙江大区 AI 能力中台</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-num" id="statTotal">-</div><div class="stat-label">技能总数</div></div>
+    <div class="stat"><div class="stat-num" id="statDown">-</div><div class="stat-label">累计下载</div></div>
+    <div class="stat"><div class="stat-num" id="statAuth">-</div><div class="stat-label">贡献者</div></div>
+  </div>
+</div>
+
+<div class="container">
+  <div id="statusBar" class="status-bar status-ok">加载中...</div>
+  <div class="grid" id="skillGrid"><div class="spinner"></div></div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalBody"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer style="text-align:center;padding:24px;color:var(--sub);font-size:11px;border-top:1px solid var(--border);margin-top:32px">
+  Skill Hub v2 · © <span id="year"></span> Bao juan Tang
+</footer>
+
+<script>
+// ====== Simple, stable skill loader ======
+const DATA_URL = './skills.json';
+let skills = [];
+let isAdmin = false;
+let isGuest = false;
+
+function parseURL() {
+  const p = new URLSearchParams(window.location.search);
+  const hash = window.location.hash;
+  isAdmin = p.get('admin') !== null || hash.includes('admin');
+  isGuest = p.get('view') === 'guest' || p.get('view') === 'client' || hash.includes('view=guest');
+}
+
+async function loadSkills() {
+  const url = DATA_URL + '?t=' + Date.now();
+  const r = await fetch(url, { cache: 'no-store' });
+  if (!r.ok) throw new Error('HTTP ' + r.status);
+  const data = await r.json();
+  const arr = Array.isArray(data) ? data : (data.skills || []);
+  return arr;
+}
+
+function render() {
+  const q = (document.getElementById('searchInput').value || '').toLowerCase();
+  const af = document.getElementById('audienceFilter').value;
+
+  let filtered = [...skills];
+
+  if (isGuest) {
+    // Guest mode: only show 对客赋能
+    filtered = filtered.filter(s => (s.audience || '').trim() === '对客赋能');
+  }
+
+  if (af !== 'all') {
+    filtered = filtered.filter(s => (s.audience || '') === af);
+  }
+
+  if (q) {
+    filtered = filtered.filter(s =>
+      (s.name || '').toLowerCase().includes(q) ||
+      (s.description || '').toLowerCase().includes(q) ||
+      (s.tags || []).some(t => t.toLowerCase().includes(q)) ||
+      (s.author || '').toLowerCase().includes(q)
+    );
+  }
+
+  // Sort by newest
+  filtered.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
+
+  const grid = document.getElementById('skillGrid');
+  const totalDown = filtered.reduce((sum, s) => sum + (s.downloads || 0), 0);
+  const authors = new Set(filtered.map(s => s.author).filter(Boolean));
+
+  document.getElementById('statTotal').textContent = filtered.length;
+  document.getElementById('statDown').textContent = totalDown;
+  document.getElementById('statAuth').textContent = authors.size;
+
+  const statusBar = document.getElementById('statusBar');
+  const hasToken = !!localStorage.getItem('skillhub_gh_token');
+  if (isAdmin && hasToken) {
+    statusBar.className = 'status-bar status-ok';
+    statusBar.innerHTML = '&#10003; GitHub Token 已配置';
+  } else if (isAdmin && !hasToken) {
+    statusBar.className = 'status-bar status-warn';
+    statusBar.innerHTML = '&#9888; GitHub Token 未配置 — <a href="#" onclick="setToken()" style="color:var(--orange);font-weight:600">点此配置</a>';
+  } else if (isGuest) {
+    statusBar.className = 'status-bar status-ok';
+    statusBar.textContent = '对客赋能技能 · 共 ' + filtered.length + ' 个';
+  } else {
+    statusBar.className = 'status-bar status-ok';
+    statusBar.innerHTML = '共 ' + filtered.length + ' 个技能';
+  }
+
+  document.getElementById('adminBadge').style.display = isAdmin ? 'inline' : 'none';
+  document.getElementById('guestBadge').style.display = isGuest ? 'inline' : 'none';
+
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div class="empty"><div class="empty-icon">&#128269;</div><p>没有找到技能</p></div>';
+    return;
+  }
+
+  grid.innerHTML = filtered.map(s => {
+    const audienceBadge = (s.audience === '对客赋能')
+      ? '<span class="tag tag-audience">对客赋能</span>'
+      : '<span class="tag tag-internal">对内提效</span>';
+    const roleTag = s.role ? '<span class="tag tag-role">' + esc(s.role) + '</span>' : '';
+    const catTag = s.category ? '<span class="tag tag-cat">' + esc(s.category) + '</span>' : '';
+    const tags = (s.tags || []).slice(0, 3).map(t => '<span class="tag tag-cat">' + esc(t) + '</span>').join('');
+
+    return `<div class="card" onclick="openDetail('${esc(s.id)}')">
+      <div class="card-header">
+        <div class="card-title">${esc(s.name || 'Unnamed')}</div>
+      </div>
+      <div class="card-desc">${esc(s.description || '')}</div>
+      <div class="card-meta">
+        ${audienceBadge} ${roleTag} ${catTag} ${tags}
+      </div>
+      <div class="card-footer">
+        <div class="card-footer-left">
+          <span>&#128100; ${esc(s.author || 'Unknown')}</span>
+          <span>&#128077; ${s.likes || 0}</span>
+          <span>&#11015; ${s.downloads || 0}</span>
+        </div>
+        <div class="card-footer-right">${s.createdAt || ''}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openDetail(id) {
+  const s = skills.find(x => x.id === id);
+  if (!s) return;
+  const content = (s.content || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const fileUrl = s.fileUrl || '';
+  const absUrl = fileUrl.startsWith('http') ? fileUrl : fileUrl.startsWith('./') ? fileUrl : ('./' + fileUrl);
+
+  document.getElementById('modalBody').innerHTML = `
+    <h2>${esc(s.name)}</h2>
+    <div class="modal-meta">
+      <span class="tag tag-audience">${esc(s.audience || '')}</span>
+      ${s.role ? '<span class="tag tag-role">' + esc(s.role) + '</span>' : ''}
+      ${s.category ? '<span class="tag tag-cat">' + esc(s.category) + '</span>' : ''}
+    </div>
+    <p style="font-size:13px;color:var(--sub);margin-bottom:12px">${esc(s.description || '')}</p>
+    ${content ? '<div class="modal-content">' + content.substring(0, 5000) + (content.length > 5000 ? '...' : '') + '</div>' : ''}
+    <div class="modal-actions">
+      ${fileUrl ? '<a href="' + absUrl + '" class="btn btn-blue" download>&#11015; 下载技能包</a>' : ''}
+      <button class="btn btn-outline" onclick="closeModal()">关闭</button>
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+}
+
+function esc(s) {
+  if (!s) return '';
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+let tokenInputVisible = false;
+function setToken() {
+  if (tokenInputVisible) return;
+  tokenInputVisible = true;
+  const token = prompt('粘贴 GitHub Token (github_pat_... 或 ghp_...):');
+  tokenInputVisible = false;
+  if (token && (token.startsWith('ghp_') || token.startsWith('github_pat_'))) {
+    localStorage.setItem('skillhub_gh_token', token);
+    showToast('Token 已保存');
+    render();
+  } else if (token) {
+    showToast('Token 格式不正确');
+  }
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+document.getElementById('searchInput').addEventListener('input', render);
+document.getElementById('audienceFilter').addEventListener('change', render);
+document.getElementById('modalOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+// Init
+parseURL();
+
+// Guest auto-unlock
+if (isGuest) {
+  const pass = new URLSearchParams(window.location.search).get('pass');
+  if (pass === 'tangbaojuan') {
+    try { sessionStorage.setItem('skillhub_guest_unlocked', '1'); } catch(e) {}
+  }
+  // Force guest mode even without pass (will show 对客赋能 only)
+}
+
+loadSkills()
+  .then(data => {
+    skills = data;
+    render();
+    console.log('[SkillHub] Loaded ' + skills.length + ' skills from ' + DATA_URL);
+  })
+  .catch(err => {
+    console.error('[SkillHub] Load failed:', err);
+    document.getElementById('skillGrid').innerHTML = '<div class="empty"><div class="empty-icon">&#9888;</div><p>加载失败，请刷新重试</p><p style="font-size:11px;margin-top:4px">' + esc(err.message) + '</p></div>';
+    document.getElementById('statusBar').className = 'status-bar status-warn';
+    document.getElementById('statusBar').textContent = '加载失败: ' + err.message;
+  });
+
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
 </html>
