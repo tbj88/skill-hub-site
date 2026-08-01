@@ -409,15 +409,14 @@ function openDetail(id) {
       ${isAdmin&&hasToken()?`<button class="btn btn-outline" onclick="openEdit('${esc(s.id)}')">&#9998; 编辑</button><button class="btn btn-red" onclick="deleteSkill('${esc(s.id)}')">&#128465; 删除</button>`:''}
       <button class="btn btn-ghost" onclick="closeDetail()">关闭</button>
     </div>`;
-  document.getElementById('detailModal').classList.add('open');
+  const dm = document.getElementById('detailModal');
+  dm.classList.add('open'); dm.style.display = 'flex';
 }
 
-function closeDetail() { document.getElementById('detailModal').classList.remove('open'); }
+function closeDetail() { const m = document.getElementById('detailModal'); m.classList.remove('open'); m.style.display = 'none'; }
 
-// ===== Upload Modal =====
 function openUpload(skillId) {
   const s = skillId ? skills.find(x=>x.id===skillId) : null;
-
   document.getElementById('uploadBody').innerHTML = `
     <h2>${s?'编辑技能':'上传技能'}</h2>
     <div class="form-group"><label>技能名称 *</label><input id="fName" value="${esc(s?s.name:'')}"></div>
@@ -433,14 +432,15 @@ function openUpload(skillId) {
     <div class="form-group"><label>技能内容（Markdown / 纯文本）</label><textarea id="fContent" style="min-height:200px">${esc(s?s.content:'')}</textarea></div>
     <div class="form-group"><label>技能包文件（ZIP, .skill, .md）</label><input type="file" id="fFile"></div>
     <div class="modal-actions">
-      <button class="btn btn-blue" onclick="submitSkill('${s?s.id:''}')">${s?'保存修改':'提交上传'}</button>
+      <button class="btn btn-brand" onclick="submitSkill('${s?s.id:''}')">${s?'保存修改':'提交上传'}</button>
       <button class="btn btn-ghost" onclick="closeUpload()">取消</button>
     </div>`;
-  document.getElementById('uploadModal').classList.add('open');
+  const m = document.getElementById('uploadModal');
+  m.classList.add('open'); m.style.display = 'flex';
 }
 
 function openEdit(id) { closeDetail(); openUpload(id); }
-function closeUpload() { document.getElementById('uploadModal').classList.remove('open'); }
+function closeUpload() { const m = document.getElementById('uploadModal'); m.classList.remove('open'); m.style.display = 'none'; }
 
 async function submitSkill(existingId) {
   if (!hasToken()) { showToast('请先配置 GitHub Token'); return; }
@@ -511,10 +511,11 @@ async function submitSkill(existingId) {
   try {
     await saveSkillsToGitHub(skills);
     closeUpload();
+    await loadSkills().then(d => { skills = d; });
     render();
-    showToast(existingId ? '技能已更新（1-2分钟后生效）' : '技能已发布（1-2分钟后生效）');
+    showToast(existingId ? '已保存！1-2分钟后生效' : '已发布！1-2分钟后生效');
   } catch(e) {
-    showToast('保存失败: ' + e.message);
+    alert('保存失败: ' + e.message);
     console.error('[SkillHub] Save error:', e);
   }
 }
@@ -618,8 +619,12 @@ function Cw(name, fallback) {
 function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function showToast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2500);
+  t.textContent = msg;
+  t.classList.add('show');
+  t.style.opacity = '1';
+  t.style.display = 'block';
+  clearTimeout(t._timeout);
+  t._timeout = setTimeout(() => { t.classList.remove('show'); t.style.opacity = '0'; }, 2500);
 }
 
 // ===== Events =====
