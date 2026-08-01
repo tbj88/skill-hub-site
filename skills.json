@@ -1,6 +1,28 @@
 {
   "skills": [
     {
+      "id": "美工-T-国际站详情制作-bf4s",
+      "name": "美工-T 国际站详情制作",
+      "description": "",
+      "type": "SKILL",
+      "category": "",
+      "role": "美工",
+      "audience": "对客赋能",
+      "tags": [],
+      "author": "Bao juan Tang",
+      "version": "v1.0",
+      "cert": "none",
+      "likes": 0,
+      "downloads": 0,
+      "createdAt": "2026-08-01",
+      "content": "",
+      "fileName": "美工-T详情制作技能.zip",
+      "fileSize": 18544,
+      "fileType": "application/zip",
+      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/情制作-bf4s/美工-T-国际站详情制作___-T______.zip",
+      "updatedAt": "2026-08-01"
+    },
+    {
       "id": "汤-交通锥详情制作-8b34",
       "name": "美工- 交通锥详情制作",
       "description": "4图极简 + 1200px + 大宗师 5 步 + AIDA,覆盖 10 大道路交通安全后市场品类",
@@ -283,5 +305,5 @@
       "updatedAt": "2026-08-01"
     }
   ],
-  "updatedAt": "2026-08-01T13:55:20.535Z"
+  "updatedAt": "2026-08-01T13:57:41.674Z"
 }
