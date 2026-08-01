@@ -259,7 +259,28 @@
       "fileSize": 10035,
       "fileType": "application/zip",
       "fileUrl": "./data/files/okki-klhj/OKKI_clean.zip"
+    },
+    {
+      "id": "t-6-g7lm",
+      "name": "美工-T 国际站主图6+标题",
+      "description": "",
+      "type": "SKILL",
+      "category": "主图 6 图",
+      "role": "美工",
+      "audience": "对客赋能",
+      "tags": [],
+      "author": "Bao juan Tang",
+      "version": "v1.0",
+      "cert": "none",
+      "likes": 0,
+      "downloads": 0,
+      "createdAt": "2026-08-01",
+      "content": "",
+      "fileName": "美工-T 国际站主图6+标题.zip",
+      "fileSize": 8643,
+      "fileType": "application/zip",
+      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/t-6-g7lm/T-6.zip"
     }
   ],
-  "updatedAt": "2026-07-24T15:59:26.518Z"
+  "updatedAt": "2026-08-01T12:53:09.134Z"
 }
