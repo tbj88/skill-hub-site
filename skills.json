@@ -1,6 +1,28 @@
 {
   "skills": [
     {
+      "id": "业务-RFQ-智能扫描专家-xtad",
+      "name": "业务-RFQ 智能扫描专家",
+      "description": "**触发条件**：当用户输入的第一句话中包含以下任一信号时，立即激活引导流程：\n- **意图关键词**：「RFQ」「筛选 RFQ」「推荐 RFQ」「找询盘」「扫描商机」「采购直达」等。\n- **产品关键词**：任何具体的产品名称或品类（如「袜子」「徽章」「LED 灯」等）。",
+      "type": "SKILL",
+      "category": "RFQ",
+      "role": "业务",
+      "audience": "对客赋能",
+      "tags": [],
+      "author": "Bao juan Tang",
+      "version": "v1.0",
+      "cert": "none",
+      "likes": 0,
+      "downloads": 0,
+      "createdAt": "2026-08-01",
+      "content": "",
+      "fileName": "业务-RFQ 智能扫描专家.zip",
+      "fileSize": 187382,
+      "fileType": "application/zip",
+      "fileUrl": "https://raw.githubusercontent.com/tbj88/skill-hub-site/main/data/files/描专家-xtad/业务-RFQ-智能扫描专家___-RFQ_______.zip",
+      "updatedAt": "2026-08-01"
+    },
+    {
       "id": "美工-T-国际站详情制作-bf4s",
       "name": "美工-T 国际站详情制作",
       "description": "用户消息包含「详情制作 / 做详情 / 制作详情 / 详情图 / 8模块详情」之一，且提供了产品（图片 / 链接 / 名称）→ 立即按本流程执行。",
@@ -305,5 +327,5 @@
       "updatedAt": "2026-08-01"
     }
   ],
-  "updatedAt": "2026-08-01T14:38:01.228Z"
+  "updatedAt": "2026-08-01T14:42:35.712Z"
 }
