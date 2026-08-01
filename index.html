@@ -7,20 +7,10 @@
 <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <style>
 :root {
-  --bg: #f1f5f9;
-  --card: #fff;
-  --text: #0f172a;
-  --sub: #64748b;
-  --blue: #2563eb;
-  --blue-light: #eff6ff;
-  --green: #16a34a;
-  --green-bg: #f0fdf4;
-  --orange: #ea580c;
-  --orange-bg: #fff7ed;
-  --purple: #7c3aed;
-  --purple-bg: #f5f3ff;
-  --border: #e2e8f0;
-  --radius: 12px;
+  --bg: #f1f5f9; --card: #fff; --text: #0f172a; --sub: #64748b;
+  --blue: #2563eb; --blue-light: #eff6ff; --green: #16a34a; --green-bg: #f0fdf4;
+  --orange: #ea580c; --purple: #7c3aed; --purple-bg: #f5f3ff;
+  --border: #e2e8f0; --radius: 12px; --red: #dc2626; --red-bg: #fef2f2;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
@@ -34,32 +24,32 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 .badge { font-size: 11px; padding: 2px 8px; border-radius: 99px; font-weight: 500; }
 .badge-admin { background: var(--green-bg); color: var(--green); }
 .badge-guest { background: var(--purple-bg); color: var(--purple); }
-.btn { border: none; cursor: pointer; font-size: 13px; padding: 6px 14px; border-radius: 8px; font-weight: 500; transition: .15s; }
+.btn { border: none; cursor: pointer; font-size: 13px; padding: 6px 14px; border-radius: 8px; font-weight: 500; transition: .15s; white-space: nowrap; }
 .btn-blue { background: var(--blue); color: #fff; }
 .btn-blue:hover { opacity: .9; }
 .btn-outline { background: var(--blue-light); color: var(--blue); border: 1px solid #bfdbfe; }
 .btn-outline:hover { background: #dbeafe; }
+.btn-red { background: var(--red-bg); color: var(--red); border: 1px solid #fecaca; }
+.btn-red:hover { background: #fee2e2; }
 .btn-ghost { background: transparent; color: var(--sub); }
-.btn-ghost:hover { color: var(--text); }
 
 .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%); padding: 48px 24px 32px; text-align: center; color: #fff; }
-.hero-tag { display: inline-block; background: rgba(255,255,255,.12); border-radius: 99px; padding: 4px 14px; font-size: 12px; margin-bottom: 12px; }
-.hero h1 { font-size: 32px; font-weight: 700; margin-bottom: 6px; }
+.hero h1 { font-size: 32px; font-weight: 700; }
 .hero h1 span { color: #93c5fd; }
-.hero p { font-size: 14px; color: #94a3b8; max-width: 500px; margin: 0 auto 20px; }
-.stats { display: flex; justify-content: center; gap: 24px; margin-top: 24px; }
-.stat { background: rgba(255,255,255,.08); border-radius: 10px; padding: 16px 28px; min-width: 120px; }
+.hero p { font-size: 14px; color: #94a3b8; max-width: 500px; margin: 8px auto 20px; }
+.stats { display: flex; justify-content: center; gap: 24px; margin-top: 20px; }
+.stat { background: rgba(255,255,255,.08); border-radius: 10px; padding: 16px 28px; min-width: 110px; cursor: pointer; }
 .stat-num { font-size: 28px; font-weight: 700; }
 .stat-label { font-size: 12px; color: #94a3b8; margin-top: 2px; }
 
 .container { max-width: 1280px; margin: 0 auto; padding: 24px; }
-.filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-.filter-bar input { flex: 1; min-width: 200px; padding: 8px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; outline: none; }
+.filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; align-items: center; }
+.filter-bar input { flex: 1; min-width: 180px; padding: 8px 14px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; outline: none; }
 .filter-bar input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
-.filter-bar select { padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; background: #fff; outline: none; cursor: pointer; }
+.filter-bar select { padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; background: #fff; outline: none; }
 .status-bar { padding: 8px 16px; border-radius: 8px; font-size: 12px; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
 .status-ok { background: var(--green-bg); color: var(--green); }
-.status-warn { background: var(--orange-bg); color: var(--orange); }
+.status-warn { background: #fef3c7; color: #92400e; }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; }
 .card { background: var(--card); border-radius: var(--radius); border: 1px solid var(--border); padding: 20px; transition: .15s; cursor: pointer; }
@@ -68,7 +58,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 .card-title { font-size: 15px; font-weight: 600; line-height: 1.4; }
 .card-desc { font-size: 13px; color: var(--sub); margin-bottom: 10px; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .card-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-.tag { font-size: 10px; padding: 2px 7px; border-radius: 99px; font-weight: 500; white-space: nowrap; }
+.tag { font-size: 10px; padding: 2px 7px; border-radius: 99px; font-weight: 500; }
 .tag-audience { background: var(--blue-light); color: var(--blue); }
 .tag-internal { background: var(--purple-bg); color: var(--purple); }
 .tag-role { background: #f0fdf4; color: var(--green); }
@@ -79,22 +69,29 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 
 .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 200; align-items: center; justify-content: center; }
 .modal-overlay.open { display: flex; }
-.modal { background: #fff; border-radius: 14px; max-width: 680px; width: 90%; max-height: 80vh; overflow-y: auto; padding: 28px; }
+.modal { background: #fff; border-radius: 14px; max-width: 680px; width: 90%; max-height: 85vh; overflow-y: auto; padding: 28px; }
 .modal h2 { font-size: 18px; margin-bottom: 12px; }
+.modal h3 { font-size: 14px; margin: 16px 0 6px; color: var(--sub); }
 .modal-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
 .modal-content { background: #f8fafc; border-radius: 8px; padding: 16px; font-size: 13px; line-height: 1.7; white-space: pre-wrap; max-height: 300px; overflow-y: auto; color: #334155; }
-.modal-actions { display: flex; gap: 8px; margin-top: 16px; justify-content: flex-end; }
+.modal-actions { display: flex; gap: 8px; margin-top: 16px; justify-content: flex-end; flex-wrap: wrap; }
+
+.form-group { margin-bottom: 12px; }
+.form-group label { display: block; font-size: 12px; font-weight: 600; color: var(--sub); margin-bottom: 4px; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 8px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; outline: none; font-family: inherit; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,.1); }
+.form-group textarea { min-height: 80px; resize: vertical; }
 
 .toast { position: fixed; bottom: 20px; right: 20px; background: #1e293b; color: #fff; padding: 10px 18px; border-radius: 8px; font-size: 13px; z-index: 300; opacity: 0; transition: .3s; pointer-events: none; }
 .toast.show { opacity: 1; }
 
 .empty { text-align: center; padding: 60px 20px; color: var(--sub); }
-.empty-icon { font-size: 40px; margin-bottom: 10px; }
 .spinner { width: 24px; height: 24px; border: 3px solid #e2e8f0; border-top-color: var(--blue); border-radius: 50%; animation: spin .6s linear infinite; margin: 40px auto; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-.copy-link { font-size: 11px; color: var(--blue); cursor: pointer; margin-left: 8px; }
-.copy-link:hover { text-decoration: underline; }
+.small-link { font-size: 12px; color: var(--blue); cursor: pointer; }
+.small-link:hover { opacity: .8; }
+input[type="file"] { font-size: 13px; }
 </style>
 </head>
 <body>
@@ -110,23 +107,22 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
     <span class="badge badge-guest" id="guestBadge" style="display:none">对客视图</span>
   </div>
   <div class="nav-right">
-    <input type="text" id="searchInput" placeholder="搜索技能..." style="padding:6px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;width:180px;outline:none">
+    <input type="text" id="searchInput" placeholder="搜索技能..." style="padding:6px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;width:160px;outline:none">
     <select id="audienceFilter" style="padding:6px 10px;border:1px solid var(--border);border-radius:8px;font-size:12px;background:#fff">
       <option value="all">全部</option>
       <option value="对客赋能">对客赋能</option>
       <option value="对内提效">对内提效</option>
     </select>
-    <span id="tokenStatus" style="font-size:11px;color:var(--sub)"></span>
-    <button class="btn btn-outline" id="btnClear" style="display:none">清空筛选</button>
+    <span id="tokenStatus" style="font-size:11px"></span>
+    <button class="btn btn-blue" id="btnUpload" style="display:none" onclick="openUpload()">+ 上传技能</button>
   </div>
 </nav>
 
 <div class="hero">
-  <div class="hero-tag">浙江大区 AI 创客大赛</div>
   <h1>AI 技能 <span>资产库</span></h1>
   <p>汇聚团队智慧，共建共享优质 AI 技能，打造浙江大区 AI 能力中台</p>
   <div class="stats">
-    <div class="stat"><div class="stat-num" id="statTotal">-</div><div class="stat-label">技能总数</div></div>
+    <div class="stat" id="statAll" onclick="showAll()"><div class="stat-num" id="statTotal">-</div><div class="stat-label">技能总数</div></div>
     <div class="stat"><div class="stat-num" id="statDown">-</div><div class="stat-label">累计下载</div></div>
     <div class="stat"><div class="stat-num" id="statAuth">-</div><div class="stat-label">贡献者</div></div>
   </div>
@@ -137,37 +133,120 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
   <div class="grid" id="skillGrid"><div class="spinner"></div></div>
 </div>
 
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal" id="modalBody"></div>
+<!-- Detail Modal -->
+<div class="modal-overlay" id="detailModal" onclick="if(event.target===this)closeDetail()">
+  <div class="modal" id="detailBody"></div>
+</div>
+
+<!-- Upload Modal -->
+<div class="modal-overlay" id="uploadModal" onclick="if(event.target===this)closeUpload()">
+  <div class="modal" id="uploadBody"></div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <footer style="text-align:center;padding:24px;color:var(--sub);font-size:11px;border-top:1px solid var(--border);margin-top:32px">
-  Skill Hub v2 · © <span id="year"></span> Bao juan Tang
+  Skill Hub v3 · © <span id="year"></span> Bao juan Tang
 </footer>
 
 <script>
-// ====== Simple, stable skill loader ======
-const DATA_URL = './skills.json';
+const REPO = 'tbj88/skill-hub-site';
+const BRANCH = 'main';
+const API_BASE = 'https://api.github.com/repos/' + REPO;
 let skills = [];
-let isAdmin = false;
-let isGuest = false;
+let isAdmin = false, isGuest = false;
 
+// ===== URL & Mode =====
 function parseURL() {
   const p = new URLSearchParams(window.location.search);
-  const hash = window.location.hash;
-  isAdmin = p.get('admin') !== null || hash.includes('admin');
-  isGuest = p.get('view') === 'guest' || p.get('view') === 'client' || hash.includes('view=guest');
+  const h = window.location.hash;
+  isAdmin = p.get('admin') !== null || h.includes('admin');
+  isGuest = p.get('view') === 'guest' || p.get('view') === 'client' || h.includes('view=guest');
 }
 
+// ===== Token =====
+function getToken() { return localStorage.getItem('skillhub_gh_token') || ''; }
+function setToken(t) { localStorage.setItem('skillhub_gh_token', t); }
+function hasToken() { const t = getToken(); return !!(t && (t.startsWith('ghp_') || t.startsWith('github_pat_'))); }
+
+function promptToken() {
+  const t = prompt('粘贴 GitHub Token (github_pat_... 或 ghp_...):');
+  if (t && (t.startsWith('ghp_') || t.startsWith('github_pat_'))) {
+    setToken(t);
+    showToast('Token 已保存');
+    render();
+  } else if (t) {
+    showToast('Token 格式不正确');
+  }
+}
+
+// ===== API =====
+async function ghGet(path) {
+  const r = await fetch(API_BASE + '/contents' + path + '?ref=' + BRANCH + '&_t=' + Date.now(), {
+    headers: { Authorization: 'token ' + getToken(), Accept: 'application/vnd.github+json' }
+  });
+  if (!r.ok) throw new Error('GitHub API GET ' + path + ' → ' + r.status);
+  return r.json();
+}
+
+async function ghPut(path, content, message) {
+  // Get current SHA
+  let sha = '';
+  try { const d = await ghGet(path); sha = d.sha; } catch(e) {}
+  const body = { message, content: btoa(unescape(encodeURIComponent(content))), branch: BRANCH };
+  if (sha) body.sha = sha;
+  const r = await fetch(API_BASE + '/contents' + path, {
+    method: 'PUT',
+    headers: { Authorization: 'token ' + getToken(), Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!r.ok) {
+    const e = await r.text();
+    throw new Error('GitHub API PUT failed: ' + r.status + ' ' + e.slice(0,200));
+  }
+  return r.json();
+}
+
+async function ghPutBinary(path, base64Content, message) {
+  let sha = '';
+  try { const d = await ghGet(path); sha = d.sha; } catch(e) {}
+  const body = { message, content: base64Content, branch: BRANCH };
+  if (sha) body.sha = sha;
+  const r = await fetch(API_BASE + '/contents' + path, {
+    method: 'PUT',
+    headers: { Authorization: 'token ' + getToken(), Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  });
+  if (!r.ok) { const e = await r.text(); throw new Error('Upload failed: ' + r.status + ' ' + e.slice(0,200)); }
+  return r.json();
+}
+
+// ===== Data =====
 async function loadSkills() {
-  const url = DATA_URL + '?t=' + Date.now();
+  const url = './skills.json?t=' + Date.now();
   const r = await fetch(url, { cache: 'no-store' });
   if (!r.ok) throw new Error('HTTP ' + r.status);
   const data = await r.json();
-  const arr = Array.isArray(data) ? data : (data.skills || []);
-  return arr;
+  return Array.isArray(data) ? data : (data.skills || []);
+}
+
+async function saveSkillsToGitHub(skillsArr) {
+  const data = { skills: skillsArr, updatedAt: new Date().toISOString() };
+  const json = JSON.stringify(data, null, 2);
+  await ghPut('/skills.json', json, 'update: ' + skillsArr.length + ' skills');
+}
+
+function genId(name) {
+  const base = name.replace(/[^\w\u4e00-\u9fff]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').slice(0, 20);
+  return base + '-' + Math.random().toString(36).slice(2, 6);
+}
+
+// ===== Render =====
+function getAbsUrl(fileUrl) {
+  if (!fileUrl) return '';
+  if (fileUrl.startsWith('http')) return fileUrl;
+  if (fileUrl.startsWith('./')) return fileUrl;
+  return './' + fileUrl;
 }
 
 function render() {
@@ -175,175 +254,245 @@ function render() {
   const af = document.getElementById('audienceFilter').value;
 
   let filtered = [...skills];
-
-  if (isGuest) {
-    // Guest mode: only show 对客赋能
-    filtered = filtered.filter(s => (s.audience || '').trim() === '对客赋能');
-  }
-
-  if (af !== 'all') {
-    filtered = filtered.filter(s => (s.audience || '') === af);
-  }
-
+  if (isGuest) filtered = filtered.filter(s => (s.audience || '').trim() === '对客赋能');
+  if (af !== 'all') filtered = filtered.filter(s => s.audience === af);
   if (q) {
     filtered = filtered.filter(s =>
-      (s.name || '').toLowerCase().includes(q) ||
-      (s.description || '').toLowerCase().includes(q) ||
-      (s.tags || []).some(t => t.toLowerCase().includes(q)) ||
-      (s.author || '').toLowerCase().includes(q)
-    );
+      (s.name||'').toLowerCase().includes(q) || (s.description||'').toLowerCase().includes(q) ||
+      (s.tags||[]).some(t=>t.toLowerCase().includes(q)) || (s.author||'').toLowerCase().includes(q));
   }
-
-  // Sort by newest
-  filtered.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
-
-  const grid = document.getElementById('skillGrid');
-  const totalDown = filtered.reduce((sum, s) => sum + (s.downloads || 0), 0);
-  const authors = new Set(filtered.map(s => s.author).filter(Boolean));
+  filtered.sort((a,b) => (b.createdAt||'').localeCompare(a.createdAt||''));
 
   document.getElementById('statTotal').textContent = filtered.length;
-  document.getElementById('statDown').textContent = totalDown;
-  document.getElementById('statAuth').textContent = authors.size;
-
-  const statusBar = document.getElementById('statusBar');
-  const hasToken = !!localStorage.getItem('skillhub_gh_token');
-  if (isAdmin && hasToken) {
-    statusBar.className = 'status-bar status-ok';
-    statusBar.innerHTML = '&#10003; GitHub Token 已配置';
-  } else if (isAdmin && !hasToken) {
-    statusBar.className = 'status-bar status-warn';
-    statusBar.innerHTML = '&#9888; GitHub Token 未配置 — <a href="#" onclick="setToken()" style="color:var(--orange);font-weight:600">点此配置</a>';
-  } else if (isGuest) {
-    statusBar.className = 'status-bar status-ok';
-    statusBar.textContent = '对客赋能技能 · 共 ' + filtered.length + ' 个';
-  } else {
-    statusBar.className = 'status-bar status-ok';
-    statusBar.innerHTML = '共 ' + filtered.length + ' 个技能';
-  }
-
+  document.getElementById('statDown').textContent = filtered.reduce((s,x)=>s+(x.downloads||0),0);
+  document.getElementById('statAuth').textContent = new Set(filtered.map(s=>s.author).filter(Boolean)).size;
   document.getElementById('adminBadge').style.display = isAdmin ? 'inline' : 'none';
   document.getElementById('guestBadge').style.display = isGuest ? 'inline' : 'none';
+  document.getElementById('btnUpload').style.display = isAdmin && hasToken() ? 'inline-flex' : 'none';
 
-  if (filtered.length === 0) {
-    grid.innerHTML = '<div class="empty"><div class="empty-icon">&#128269;</div><p>没有找到技能</p></div>';
-    return;
+  const sb = document.getElementById('statusBar');
+  if (isAdmin && hasToken()) {
+    sb.className = 'status-bar status-ok';
+    sb.innerHTML = '&#10003; Token 已配置 · ' + skills.length + ' 个技能';
+  } else if (isAdmin && !hasToken()) {
+    sb.className = 'status-bar status-warn';
+    sb.innerHTML = '&#9888; Token 未配置 — <a href="#" onclick="promptToken();return false" style="color:#92400e;font-weight:600">点此配置</a>（需要 Token 才能上传/编辑/删除）';
+  } else if (isGuest) {
+    sb.className = 'status-bar status-ok';
+    sb.textContent = '对客赋能 · ' + filtered.length + ' 个技能';
+  } else {
+    sb.className = 'status-bar status-ok';
+    sb.textContent = '共 ' + filtered.length + ' 个技能';
   }
 
-  grid.innerHTML = filtered.map(s => {
-    const audienceBadge = (s.audience === '对客赋能')
-      ? '<span class="tag tag-audience">对客赋能</span>'
-      : '<span class="tag tag-internal">对内提效</span>';
-    const roleTag = s.role ? '<span class="tag tag-role">' + esc(s.role) + '</span>' : '';
-    const catTag = s.category ? '<span class="tag tag-cat">' + esc(s.category) + '</span>' : '';
-    const tags = (s.tags || []).slice(0, 3).map(t => '<span class="tag tag-cat">' + esc(t) + '</span>').join('');
+  const grid = document.getElementById('skillGrid');
+  if (!filtered.length) { grid.innerHTML = '<div class="empty"><p style="font-size:40px">&#128269;</p><p>没有找到技能</p></div>'; return; }
 
-    return `<div class="card" onclick="openDetail('${esc(s.id)}')">
-      <div class="card-header">
-        <div class="card-title">${esc(s.name || 'Unnamed')}</div>
-      </div>
-      <div class="card-desc">${esc(s.description || '')}</div>
+  grid.innerHTML = filtered.map(s => `
+    <div class="card" onclick="openDetail('${esc(s.id)}')">
+      <div class="card-header"><div class="card-title">${esc(s.name||'Unnamed')}</div></div>
+      <div class="card-desc">${esc(s.description||'')}</div>
       <div class="card-meta">
-        ${audienceBadge} ${roleTag} ${catTag} ${tags}
+        ${s.audience==='对客赋能'?'<span class="tag tag-audience">对客赋能</span>':'<span class="tag tag-internal">对内提效</span>'}
+        ${s.role?`<span class="tag tag-role">${esc(s.role)}</span>`:''}
+        ${s.category?`<span class="tag tag-cat">${esc(s.category)}</span>`:''}
+        ${(s.tags||[]).slice(0,3).map(t=>`<span class="tag tag-cat">${esc(t)}</span>`).join('')}
       </div>
       <div class="card-footer">
         <div class="card-footer-left">
-          <span>&#128100; ${esc(s.author || 'Unknown')}</span>
-          <span>&#128077; ${s.likes || 0}</span>
-          <span>&#11015; ${s.downloads || 0}</span>
+          <span>&#128100; ${esc(s.author||'')}</span>
+          <span>&#128077; ${s.likes||0}</span>
+          <span>&#11015; ${s.downloads||0}</span>
         </div>
-        <div class="card-footer-right">${s.createdAt || ''}</div>
+        <div class="card-footer-right">${s.createdAt||''}</div>
       </div>
-    </div>`;
-  }).join('');
+    </div>`).join('');
 }
 
+// ===== Detail Modal =====
 function openDetail(id) {
-  const s = skills.find(x => x.id === id);
+  const s = skills.find(x=>x.id===id);
   if (!s) return;
-  const content = (s.content || '').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  const fileUrl = s.fileUrl || '';
-  const absUrl = fileUrl.startsWith('http') ? fileUrl : fileUrl.startsWith('./') ? fileUrl : ('./' + fileUrl);
+  const content = (s.content||'').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const fileUrl = getAbsUrl(s.fileUrl);
 
-  document.getElementById('modalBody').innerHTML = `
+  document.getElementById('detailBody').innerHTML = `
     <h2>${esc(s.name)}</h2>
     <div class="modal-meta">
-      <span class="tag tag-audience">${esc(s.audience || '')}</span>
-      ${s.role ? '<span class="tag tag-role">' + esc(s.role) + '</span>' : ''}
-      ${s.category ? '<span class="tag tag-cat">' + esc(s.category) + '</span>' : ''}
+      ${s.audience==='对客赋能'?'<span class="tag tag-audience">对客赋能</span>':'<span class="tag tag-internal">对内提效</span>'}
+      ${s.role?`<span class="tag tag-role">${esc(s.role)}</span>`:''}
+      ${s.category?`<span class="tag tag-cat">${esc(s.category)}</span>`:''}
     </div>
-    <p style="font-size:13px;color:var(--sub);margin-bottom:12px">${esc(s.description || '')}</p>
-    ${content ? '<div class="modal-content">' + content.substring(0, 5000) + (content.length > 5000 ? '...' : '') + '</div>' : ''}
+    <p style="font-size:13px;color:var(--sub);margin-bottom:12px">${esc(s.description||'')}</p>
+    <p style="font-size:12px;color:var(--sub)">作者: ${esc(s.author||'')} · ${s.createdAt||''} · 下载 ${s.downloads||0} · 点赞 ${s.likes||0}</p>
+    ${content?`<h3>技能内容</h3><div class="modal-content">${content.slice(0,8000)}${content.length>8000?'...':''}</div>`:''}
     <div class="modal-actions">
-      ${fileUrl ? '<a href="' + absUrl + '" class="btn btn-blue" download>&#11015; 下载技能包</a>' : ''}
-      <button class="btn btn-outline" onclick="closeModal()">关闭</button>
+      ${fileUrl?`<a href="${fileUrl}" class="btn btn-blue" download>&#11015; 下载技能包</a>`:''}
+      ${isAdmin&&hasToken()?`<button class="btn btn-outline" onclick="openEdit('${esc(s.id)}')">&#9998; 编辑</button><button class="btn btn-red" onclick="deleteSkill('${esc(s.id)}')">&#128465; 删除</button>`:''}
+      <button class="btn btn-ghost" onclick="closeDetail()">关闭</button>
     </div>`;
-  document.getElementById('modalOverlay').classList.add('open');
+  document.getElementById('detailModal').classList.add('open');
 }
 
-function closeModal() {
-  document.getElementById('modalOverlay').classList.remove('open');
+function closeDetail() { document.getElementById('detailModal').classList.remove('open'); }
+
+// ===== Upload Modal =====
+function openUpload(skillId) {
+  const s = skillId ? skills.find(x=>x.id===skillId) : null;
+
+  document.getElementById('uploadBody').innerHTML = `
+    <h2>${s?'编辑技能':'上传技能'}</h2>
+    <div class="form-group"><label>技能名称 *</label><input id="fName" value="${esc(s?s.name:'')}"></div>
+    <div class="form-group"><label>描述</label><textarea id="fDesc">${esc(s?s.description:'')}</textarea></div>
+    <div class="form-group"><label>受众</label><select id="fAudience">
+      <option value="对客赋能" ${s&&s.audience==='对客赋能'?'selected':''}>对客赋能</option>
+      <option value="对内提效" ${s&&s.audience==='对内提效'?'selected':''}>对内提效</option>
+    </select></div>
+    <div class="form-group"><label>角色</label><input id="fRole" value="${esc(s?s.role:'')}" placeholder="如: 业务、主管、美工"></div>
+    <div class="form-group"><label>分类</label><input id="fCat" value="${esc(s?s.category:'')}" placeholder="如: OKKI、主图 6 图"></div>
+    <div class="form-group"><label>标签（逗号分隔）</label><input id="fTags" value="${esc(s?(s.tags||[]).join(', '):'')}"></div>
+    <div class="form-group"><label>作者</label><input id="fAuthor" value="${esc(s?s.author:'Bao juan Tang')}"></div>
+    <div class="form-group"><label>技能内容（Markdown / 纯文本）</label><textarea id="fContent" style="min-height:200px">${esc(s?s.content:'')}</textarea></div>
+    <div class="form-group"><label>技能包文件（ZIP, .skill, .md）</label><input type="file" id="fFile"></div>
+    <div class="modal-actions">
+      <button class="btn btn-blue" onclick="submitSkill('${s?s.id:''}')">${s?'保存修改':'提交上传'}</button>
+      <button class="btn btn-ghost" onclick="closeUpload()">取消</button>
+    </div>`;
+  document.getElementById('uploadModal').classList.add('open');
 }
 
-function esc(s) {
-  if (!s) return '';
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
+function openEdit(id) { closeDetail(); openUpload(id); }
+function closeUpload() { document.getElementById('uploadModal').classList.remove('open'); }
 
-let tokenInputVisible = false;
-function setToken() {
-  if (tokenInputVisible) return;
-  tokenInputVisible = true;
-  const token = prompt('粘贴 GitHub Token (github_pat_... 或 ghp_...):');
-  tokenInputVisible = false;
-  if (token && (token.startsWith('ghp_') || token.startsWith('github_pat_'))) {
-    localStorage.setItem('skillhub_gh_token', token);
-    showToast('Token 已保存');
+async function submitSkill(existingId) {
+  if (!hasToken()) { showToast('请先配置 GitHub Token'); return; }
+
+  const name = document.getElementById('fName').value.trim();
+  if (!name) { showToast('技能名称不能为空'); return; }
+
+  const desc = document.getElementById('fDesc').value.trim();
+  const audience = document.getElementById('fAudience').value;
+  const role = document.getElementById('fRole').value.trim();
+  const cat = document.getElementById('fCat').value.trim();
+  const tags = document.getElementById('fTags').value.split(',').map(s=>s.trim()).filter(Boolean);
+  const author = document.getElementById('fAuthor').value.trim() || 'Bao juan Tang';
+  const content = document.getElementById('fContent').value.trim();
+  const fileInput = document.getElementById('fFile');
+
+  const id = existingId || genId(name);
+  const now = new Date().toISOString().slice(0,10);
+
+  let fileUrl = '';
+  let fileName = '';
+
+  // Upload file if provided
+  if (fileInput && fileInput.files[0]) {
+    const file = fileInput.files[0];
+    fileName = file.name;
+    const cleanName = Cw(name, 'skill') + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g,'_');
+    const dirId = id.slice(-8) || Math.random().toString(36).slice(2,6);
+    const path = '/data/files/' + dirId + '/' + cleanName;
+    const reader = new FileReader();
+    const base64 = await new Promise((resolve, reject) => {
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+    try {
+      await ghPutBinary(path, base64, 'upload: ' + fileName + ' for ' + name);
+      fileUrl = 'https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + path;
+      showToast('文件上传成功');
+    } catch(e) {
+      showToast('文件上传失败: ' + e.message);
+      return;
+    }
+  }
+
+  const skill = {
+    id, name, description: desc, type: 'SKILL',
+    category: cat, role, audience,
+    tags, author, version: 'v1.0', cert: 'none',
+    likes: existingId ? (skills.find(s=>s.id===existingId)?.likes||0) : 0,
+    downloads: existingId ? (skills.find(s=>s.id===existingId)?.downloads||0) : 0,
+    createdAt: existingId ? (skills.find(s=>s.id===existingId)?.createdAt||now) : now,
+    content, fileName, fileSize: fileInput?.files[0]?.size||0,
+    fileType: fileInput?.files[0]?.type||'',
+    fileUrl: fileUrl || (existingId ? skills.find(s=>s.id===existingId)?.fileUrl||'' : ''),
+    updatedAt: now
+  };
+
+  // Update local array
+  if (existingId) {
+    const idx = skills.findIndex(s=>s.id===existingId);
+    if (idx >= 0) skills[idx] = skill;
+  } else {
+    skills.unshift(skill);
+  }
+
+  // Save to GitHub
+  try {
+    await saveSkillsToGitHub(skills);
+    closeUpload();
     render();
-  } else if (token) {
-    showToast('Token 格式不正确');
+    showToast(existingId ? '技能已更新' : '技能已发布');
+  } catch(e) {
+    showToast('保存失败: ' + e.message);
   }
 }
 
+async function deleteSkill(id) {
+  if (!hasToken()) { showToast('请先配置 GitHub Token'); return; }
+  if (!confirm('确定删除这个技能吗？此操作不可撤销。')) return;
+
+  skills = skills.filter(s => s.id !== id);
+  try {
+    await saveSkillsToGitHub(skills);
+    closeDetail();
+    render();
+    showToast('技能已删除');
+  } catch(e) {
+    showToast('删除失败: ' + e.message);
+  }
+}
+
+function showAll() {
+  document.getElementById('searchInput').value = '';
+  document.getElementById('audienceFilter').value = 'all';
+  render();
+}
+
+// ===== Helpers =====
+function Cw(name, fallback) {
+  return name.replace(/[^\w\u4e00-\u9fff]/g, '-').replace(/-+/g,'-').replace(/^-|-$/g,'').slice(0,30) || fallback;
+}
+function esc(s) { return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function showToast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2500);
 }
 
+// ===== Events =====
 document.getElementById('searchInput').addEventListener('input', render);
 document.getElementById('audienceFilter').addEventListener('change', render);
-document.getElementById('modalOverlay').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeModal();
-});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeDetail(); closeUpload(); } });
 
-// Init
+// ===== Init =====
 parseURL();
-
-// Guest auto-unlock
 if (isGuest) {
   const pass = new URLSearchParams(window.location.search).get('pass');
-  if (pass === 'tangbaojuan') {
-    try { sessionStorage.setItem('skillhub_guest_unlocked', '1'); } catch(e) {}
-  }
-  // Force guest mode even without pass (will show 对客赋能 only)
+  if (pass === 'tangbaojuan') { try { sessionStorage.setItem('skillhub_guest_unlocked','1'); } catch(e) {} }
 }
 
-loadSkills()
-  .then(data => {
-    skills = data;
-    render();
-    console.log('[SkillHub] Loaded ' + skills.length + ' skills from ' + DATA_URL);
-  })
-  .catch(err => {
-    console.error('[SkillHub] Load failed:', err);
-    document.getElementById('skillGrid').innerHTML = '<div class="empty"><div class="empty-icon">&#9888;</div><p>加载失败，请刷新重试</p><p style="font-size:11px;margin-top:4px">' + esc(err.message) + '</p></div>';
-    document.getElementById('statusBar').className = 'status-bar status-warn';
-    document.getElementById('statusBar').textContent = '加载失败: ' + err.message;
-  });
+loadSkills().then(data => {
+  skills = data;
+  render();
+  console.log('[SkillHub v3] Loaded ' + skills.length + ' skills');
+}).catch(err => {
+  document.getElementById('skillGrid').innerHTML = '<div class="empty"><p style="font-size:40px">&#9888;</p><p>加载失败</p><p style="font-size:11px">' + esc(err.message) + '</p></div>';
+  document.getElementById('statusBar').className = 'status-bar status-warn';
+  document.getElementById('statusBar').textContent = '加载失败: ' + err.message;
+});
 
 document.getElementById('year').textContent = new Date().getFullYear();
 </script>
