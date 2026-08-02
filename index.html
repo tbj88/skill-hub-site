@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <title>技能中心 · AI 技能资产库</title>
 <link rel="icon" type="image/svg+xml" href="./favicon.svg">
 <style>
@@ -471,6 +474,8 @@ async function submitSkill(existingId) {
   try {
     await ghPutBinary(path, base64, 'upload: ' + fileName + ' for ' + name);
     fileUrl = 'https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + path;
+    // Wait for GitHub to process the file commit so SHA stabilizes
+    await new Promise(r => setTimeout(r, 3000));
   } catch(e) {
     alert('文件上传失败: ' + e.message);
     return;
