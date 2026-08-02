@@ -1,28 +1,6 @@
 {
   "skills": [
     {
-      "id": "token-ippc",
-      "name": "token",
-      "description": "",
-      "type": "SKILL",
-      "category": "",
-      "role": "",
-      "audience": "对内提效",
-      "tags": [],
-      "author": "Bao juan Tang",
-      "version": "v1.0",
-      "cert": "none",
-      "likes": 0,
-      "downloads": 0,
-      "createdAt": "2026-08-01",
-      "content": "",
-      "fileName": "",
-      "fileSize": 0,
-      "fileType": "",
-      "fileUrl": "",
-      "updatedAt": "2026-08-01"
-    },
-    {
       "id": "业务员-T竞对买家深挖与决策人撬客-hn6s",
       "name": "业务员-T竞对买家深挖与决策人撬客",
       "description": "外贸「竞对海外买家反查 + 决策人联系方式挖掘 + 撬客户跟进打法」四阶段一体化情报技能。\n  给一个阿里国际站店铺链接（或公司名 / 官网 / 1688 链接），自动走完：\n  ① 店铺画像（公司全名 / 品类 / HS Code / 出口市场 / 认证 / OEM还是品牌方）\n  → ② 海关提单反查（ImportYeti / Panjiva / ImportGenius / Volza / 52WMB / Seair 六源交叉，产出具名买家清单）\n  → ③ 决策人挖掘（LinkedIn 岗位侦查 + 官网 team 页 + 邮箱格式推测 + 工商注册核验，每家 3-5 人）\n  → ④ 撬客打法（6 步跟进节奏 + 5 封开发信序列 + LinkedIn 差异化话术 + 风控评级）。\n  触发关键词：竞对买家、挖买家、买家信息、海外买家名单、海关数据、反查买家、找客户联系方式、\n  决策人、采购决策人、决策链、买家邮箱、撬客户、撬同行客户、挖同行客户、抢客户、\n  同行在给谁供货、这家公司卖给谁、客户开发、开发信、跟进方法、\n  importyeti、panjiva、提单数据、bill of lading、consignee、买家反查。\n  适用场景：主公给一个店铺链接 / 公司名 + 一句「挖买家 / 查他给谁供货 / 要联系方式 / 怎么撬」，\n  即触发本技能，产出具名买家表 + 决策人联系表 + 可直接发的开发信序列。",
@@ -393,5 +371,5 @@
       "updatedAt": "2026-08-01"
     }
   ],
-  "updatedAt": "2026-08-01T15:13:25.667Z"
+  "updatedAt": "2026-08-02T00:00:00.000Z"
 }
