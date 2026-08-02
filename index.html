@@ -248,9 +248,9 @@ async function ghGet(path) {
 }
 
 async function ghPut(path, content, message) {
-  for (let retry = 0; retry < 5; retry++) {
+  for (let retry = 0; retry < 10; retry++) {
     let sha = '';
-    try { const d = await ghGet(path); sha = d.sha; } catch(e) {}
+    try { const d = await fetch(API_BASE + '/contents' + path + '?ref=' + BRANCH + '&_t=' + Date.now(), { headers: { Authorization: 'token ' + getToken(), Accept: 'application/vnd.github+json', 'cache': 'no-store' } }).then(r => r.json()); sha = d.sha; } catch(e) {}
     const body = { message, content: btoa(unescape(encodeURIComponent(content))), branch: BRANCH };
     if (sha) body.sha = sha;
     const r = await fetch(API_BASE + '/contents' + path, {
@@ -260,13 +260,13 @@ async function ghPut(path, content, message) {
     });
     if (r.ok) return r.json();
     if (r.status === 409 || r.status === 422) {
-      await new Promise(resolve => setTimeout(resolve, 500 + retry * 500));
+      await new Promise(resolve => setTimeout(resolve, 1000 + retry * 1000));
       continue;
     }
     const e = await r.text();
-    throw new Error('GitHub API PUT failed: ' + r.status + ' ' + e.slice(0, 200));
+    throw new Error('保存失败: HTTP ' + r.status + ' ' + e.slice(0, 200));
   }
-  throw new Error('保存失败: 版本冲突，请刷新后重试');
+  throw new Error('保存失败: 重试10次仍冲突，请刷新页面后重试');
 }
 
 async function ghPutBinary(path, base64Content, message) {
