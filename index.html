@@ -207,7 +207,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 const REPO = 'tbj88/skill-hub-site';
 const BRANCH = 'main';
 const API_BASE = 'https://api.github.com/repos/' + REPO;
-const GITEE_API = 'https://gitee.com/api/v5/repos/' + REPO;
 let skills = [];
 let categories = [];
 let isAdmin = false, isGuest = false;
@@ -227,14 +226,14 @@ function parseURL() {
 }
 
 // ===== Token =====
-function getGiteeToken() { return localStorage.getItem('skillhub_gitee_token') || ''; }
-function setGiteeToken(t) { localStorage.setItem('skillhub_gitee_token', t); }
-function hasToken() { return !!getGiteeToken(); }
+function getToken() { return localStorage.getItem('skillhub_gh_token') || ''; }
+function setToken(t) { localStorage.setItem('skillhub_gh_token', t); }
+function hasToken() { const t = getToken(); return !!(t && (t.startsWith('ghp_') || t.startsWith('github_pat_'))); }
 
 function promptToken() {
-  const t = prompt('粘贴 Gitee 私人令牌:\n\n获取方式: https://gitee.com/profile/personal_access_tokens → 生成新令牌 → 勾选 projects 权限');
-  if (t && t.length > 10) {
-    setGiteeToken(t);
+  const t = prompt('粘贴 GitHub Token (ghp_ 或 github_pat_ 开头):');
+  if (t && (t.startsWith('ghp_') || t.startsWith('github_pat_'))) {
+    setToken(t);
     showToast('Token 已保存');
     render();
   } else if (t) {
@@ -242,31 +241,26 @@ function promptToken() {
   }
 }
 
-// ===== Gitee API (domestic, fast) =====
+// ===== GitHub API =====
 async function ghGet(path) {
-  const r = await fetch(GITEE_API + '/contents' + path + '?ref=' + BRANCH + '&access_token=' + getGiteeToken(), {
-    headers: { Accept: 'application/json' }
+  const r = await fetch(API_BASE + '/contents' + path + '?ref=' + BRANCH + '&_t=' + Date.now(), {
+    headers: { Authorization: 'token ' + getToken(), Accept: 'application/vnd.github+json' }
   });
-  if (!r.ok) throw new Error('Gitee GET ' + path + ': ' + r.status);
+  if (!r.ok) throw new Error('HTTP ' + r.status);
   return r.json();
 }
 
 async function ghPut(path, content, message) {
-  for (let retry = 0; retry < 3; retry++) {
+  for (let retry = 0; retry < 5; retry++) {
     let sha = '';
     try { const d = await ghGet(path); sha = d.sha; } catch(e) {}
-    const body = {
-      access_token: getGiteeToken(),
-      content: btoa(unescape(encodeURIComponent(content))),
-      message, branch: BRANCH
-    };
+    const body = { message, content: btoa(unescape(encodeURIComponent(content))), branch: BRANCH };
     if (sha) body.sha = sha;
-    const r = await fetch(GITEE_API + '/contents' + path, {
-      method: 'PUT', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
+    const r = await fetch(API_BASE + '/contents' + path, {
+      method: 'PUT', headers: { Authorization: 'token ' + getToken(), Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' }, body: JSON.stringify(body)
     });
     if (r.ok) return r.json();
-    if (r.status === 400 || r.status === 409) { await new Promise(r => setTimeout(r, 1000)); continue; }
+    if (r.status === 409 || r.status === 422) { await new Promise(r => setTimeout(r, 1000 + Math.random() * 3000)); continue; }
     const e = await r.text().catch(() => '');
     throw new Error('HTTP ' + r.status + ' ' + e.slice(0, 100));
   }
@@ -275,23 +269,8 @@ async function ghPut(path, content, message) {
 
 // ===== Data =====
 async function loadSkills() {
-  // From Gitee API (base64 decode, no CORS issues)
-  try {
-    const r = await fetch(GITEE_API + '/contents/skills.json?ref=' + BRANCH, {
-      cache: 'no-store'
-    });
-    if (r.ok) {
-      const d = await r.json();
-      if (d.content) {
-        const json = decodeURIComponent(escape(atob(d.content)));
-        const data = JSON.parse(json);
-        return Array.isArray(data) ? data : (data.skills || []);
-      }
-    }
-  } catch(e) { console.warn('Gitee API read failed'); }
-
-  // Fallback: GitHub Pages
-  const r = await fetch('./skills.json?t=' + Date.now(), { cache: 'no-store' });
+  const url = './skills.json?t=' + Date.now();
+  const r = await fetch(url, { cache: 'no-store' });
   if (!r.ok) throw new Error('HTTP ' + r.status);
   const data = await r.json();
   return Array.isArray(data) ? data : (data.skills || []);
@@ -362,7 +341,7 @@ function render() {
   // Status
   const sb = document.getElementById('statusBar');
   if (isGuest) { sb.className = 'status-bar status-ok'; sb.textContent = '对客赋能 · ' + filtered.length + ' 个技能'; }
-  else if (isAdmin && !hasToken()) { sb.className = 'status-bar status-warn'; sb.innerHTML = '&#9888; 需要 Gitee Token 才能保存 — <a href="#" onclick="promptToken();return false" style="color:#92400e;font-weight:600">点此配置</a>'; }
+  else if (isAdmin && !hasToken()) { sb.className = 'status-bar status-warn'; sb.innerHTML = '&#9888; 需要 GitHub Token 才能保存 — <a href="#" onclick="promptToken();return false" style="color:#92400e;font-weight:600">点此配置</a>'; }
   else if (isAdmin) { sb.className = 'status-bar status-ok'; sb.textContent = '管理员 · ' + filtered.length + ' 个技能'; }
   else { sb.className = 'status-bar status-ok'; sb.textContent = '共 ' + filtered.length + ' 个技能'; }
 
@@ -500,7 +479,7 @@ async function submitSkill(existingId) {
 }
 
 async function deleteSkill(id) {
-  if (!hasToken()) { alert('请先配置 Gitee Token'); return; }
+  if (!hasToken()) { alert('请先配置 GitHub Token'); return; }
   if (!confirm('确定删除这个技能吗？此操作不可撤销。')) return;
   try {
     skills = skills.filter(s => s.id !== id);
