@@ -305,9 +305,26 @@ function genId(name) {
 // ===== Render =====
 function getAbsUrl(fileUrl) {
   if (!fileUrl) return '';
+  if (fileUrl === 'inline') return ''; // handled via _file
   if (fileUrl.startsWith('http')) return fileUrl;
   if (fileUrl.startsWith('./')) return fileUrl;
   return './' + fileUrl;
+}
+
+function hasDownload(s) {
+  return !!(s._file || (s.fileUrl && s.fileUrl !== 'inline'));
+}
+
+function downloadSkill(e, s) {
+  e.stopPropagation();
+  if (s._file) {
+    const a = document.createElement('a');
+    a.href = s._file;
+    a.download = s.fileName || 'skill.zip';
+    a.click();
+  } else if (s.fileUrl) {
+    window.open(getAbsUrl(s.fileUrl));
+  }
 }
 
 function render() {
@@ -354,7 +371,6 @@ function render() {
   if (!filtered.length) { grid.innerHTML = '<div class="empty"><div style="font-size:40px">&#128269;</div><p>没有找到技能</p></div>'; return; }
 
   grid.innerHTML = filtered.map(s => {
-    const fileUrl = getAbsUrl(s.fileUrl);
     const sizeStr = s.fileSize ? (s.fileSize > 1024 ? (s.fileSize/1024).toFixed(1)+' KB' : s.fileSize+' B') : '';
     return `<div class="card" onclick="openDetail('${esc(s.id)}')">
       <div class="card-title">${esc(s.name||'Unnamed')}</div>
@@ -371,7 +387,7 @@ function render() {
         </div>
         <div class="card-bottom-right">
           <span>&#128077; ${s.likes||0}</span>
-          ${fileUrl?`<button class="btn-dl" onclick="event.stopPropagation();window.open('${fileUrl}')">&#11015; 下载</button>`:''}
+          ${hasDownload(s)?`<button class="btn-dl" onclick="downloadSkill(event,window.skillsData.find(x=>x.id==='${esc(s.id)}'))">&#11015; 下载</button>`:''}
         </div>
       </div>
     </div>`;
@@ -396,7 +412,7 @@ function openDetail(id) {
     <p style="font-size:12px;color:var(--sub)">作者: ${esc(s.author||'')} · ${s.createdAt||''} · 下载 ${s.downloads||0} · 点赞 ${s.likes||0}</p>
     ${content?`<h3>技能内容</h3><div class="modal-content">${content.slice(0,8000)}${content.length>8000?'...':''}</div>`:''}
     <div class="modal-actions">
-      ${fileUrl?`<a href="${fileUrl}" class="btn btn-blue" download>&#11015; 下载技能包</a>`:''}
+      ${hasDownload(s)?`<button class="btn btn-brand" onclick="downloadSkill(event,window.skillsData.find(x=>x.id==='${esc(s.id)}'))">&#11015; 下载技能包</button>`:''}
       ${isAdmin&&hasToken()?`<button class="btn btn-outline" onclick="openEdit('${esc(s.id)}')">&#9998; 编辑</button><button class="btn btn-red" onclick="deleteSkill('${esc(s.id)}')">&#128465; 删除</button>`:''}
       <button class="btn btn-ghost" onclick="closeDetail()">关闭</button>
     </div>`;
@@ -455,31 +471,19 @@ async function submitSkill(existingId) {
   const id = existingId || genId(name);
   const now = new Date().toISOString().slice(0,10);
 
-  let fileUrl = '';
+  let fileData = '';
   let fileName = '';
 
-  // Upload file if provided
+  // Read file as base64 (inline in skills.json, no separate commit)
   if (fileInput && fileInput.files[0]) {
     const file = fileInput.files[0];
     fileName = file.name;
-    const cleanName = Cw(name, 'skill') + '_' + file.name.replace(/[^a-zA-Z0-9._-]/g,'_');
-    const dirId = id.slice(-8) || Math.random().toString(36).slice(2,6);
-    const path = '/data/files/' + dirId + '/' + cleanName;
     const reader = new FileReader();
-    const base64 = await new Promise((resolve, reject) => {
-      reader.onload = () => resolve(reader.result.split(',')[1]);
+    fileData = await new Promise((resolve, reject) => {
+      reader.onload = () => resolve(reader.result);
       reader.onerror = reject;
       reader.readAsDataURL(file);
     });
-  try {
-    await ghPutBinary(path, base64, 'upload: ' + fileName + ' for ' + name);
-    fileUrl = 'https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + path;
-    // Wait for GitHub to process the file commit so SHA stabilizes
-    await new Promise(r => setTimeout(r, 3000));
-  } catch(e) {
-    alert('文件上传失败: ' + e.message);
-    return;
-  }
   }
 
   const skill = {
@@ -491,7 +495,8 @@ async function submitSkill(existingId) {
     createdAt: existingId ? (skills.find(s=>s.id===existingId)?.createdAt||now) : now,
     content, fileName, fileSize: fileInput?.files[0]?.size||0,
     fileType: fileInput?.files[0]?.type||'',
-    fileUrl: fileUrl || (existingId ? skills.find(s=>s.id===existingId)?.fileUrl||'' : ''),
+    _file: fileData || (existingId ? skills.find(s=>s.id===existingId)?._file||'' : ''),
+    fileUrl: fileData ? 'inline' : (existingId ? skills.find(s=>s.id===existingId)?.fileUrl||'' : ''),
     updatedAt: now
   };
 
@@ -639,6 +644,7 @@ if (isGuest) {
 
 loadSkills().then(data => {
   skills = data;
+  window.skillsData = data;
   return fetch('./categories.json?t=' + Date.now(), {cache:'no-store'}).then(r => r.json()).catch(() => []);
 }).then(catData => {
   categories = catData;
