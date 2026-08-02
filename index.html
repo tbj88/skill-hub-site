@@ -512,10 +512,17 @@ async function submitSkill(existingId) {
     skills.unshift(skill);
   }
 
-  // Save to GitHub
+  // Save via local git server (no SHA conflicts)
   try {
-    await saveSkillsToGitHub(skills);
+    const payload = { skills, token: getToken(), updatedAt: new Date().toISOString() };
+    const r = await fetch('http://localhost:8766', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const result = await r.json();
+    if (!result.ok) throw new Error(result.msg);
     closeUpload();
+    await loadSkills().then(d => { skills = d; window.skillsData = d; });
     render();
     if (saveBtn) { saveBtn.disabled = false; saveBtn.textContent = existingId ? '保存修改' : '提交上传'; }
     alert(existingId ? '保存成功！' : '发布成功！');
@@ -532,12 +539,19 @@ async function deleteSkill(id) {
 
   skills = skills.filter(s => s.id !== id);
   try {
-    await saveSkillsToGitHub(skills);
+    const payload = { skills, token: getToken(), updatedAt: new Date().toISOString() };
+    const r = await fetch('http://localhost:8766', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const result = await r.json();
+    if (!result.ok) throw new Error(result.msg);
     closeDetail();
+    await loadSkills().then(d => { skills = d; window.skillsData = d; });
     render();
-    showToast('技能已删除');
+    alert('已删除');
   } catch(e) {
-    showToast('删除失败: ' + e.message);
+    alert('删除失败: ' + e.message);
   }
 }
 
