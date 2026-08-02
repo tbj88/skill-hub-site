@@ -512,15 +512,9 @@ async function submitSkill(existingId) {
     skills.unshift(skill);
   }
 
-  // Save via local git server (no SHA conflicts)
+  // Save via GitHub API (single commit, inline files)
   try {
-    const payload = { skills, token: getToken(), updatedAt: new Date().toISOString() };
-    const r = await fetch('/save', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    const result = await r.json();
-    if (!result.ok) throw new Error(result.msg);
+    await saveSkillsToGitHub(skills);
     closeUpload();
     await loadSkills().then(d => { skills = d; window.skillsData = d; });
     render();
@@ -539,13 +533,7 @@ async function deleteSkill(id) {
 
   skills = skills.filter(s => s.id !== id);
   try {
-    const payload = { skills, token: getToken(), updatedAt: new Date().toISOString() };
-    const r = await fetch('/save', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    const result = await r.json();
-    if (!result.ok) throw new Error(result.msg);
+    await saveSkillsToGitHub(skills);
     closeDetail();
     await loadSkills().then(d => { skills = d; window.skillsData = d; });
     render();
