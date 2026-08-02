@@ -275,20 +275,6 @@ async function ghPut(path, content, message) {
 
 // ===== Data =====
 async function loadSkills() {
-  // Try Gitee raw first (fast in China)
-  try {
-    const controller = new AbortController();
-    setTimeout(() => controller.abort(), 2000);
-    const r = await fetch('https://gitee.com/' + REPO + '/raw/' + BRANCH + '/skills.json?_t=' + Date.now(), {
-      cache: 'no-store', signal: controller.signal
-    });
-    if (r.ok) {
-      const data = await r.json();
-      return Array.isArray(data) ? data : (data.skills || []);
-    }
-  } catch(e) {}
-
-  // Fallback: GitHub Pages
   const url = './skills.json?t=' + Date.now();
   const r = await fetch(url, { cache: 'no-store' });
   if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -478,12 +464,14 @@ async function submitSkill(existingId) {
     skills.unshift(skill);
   }
 
-  // Save to GitHub (inline files, single commit, with retry on conflict)
+  // Save to Gitee + sync to GitHub Pages
   try {
     const allSkills = existingId ? skills.map(s => s.id === skill.id ? skill : s) : [skill, ...skills];
     const data = { skills: allSkills, updatedAt: new Date().toISOString() };
     const json = JSON.stringify(data, null, 2);
     await ghPut('/skills.json', json, 'save: ' + allSkills.length + ' skills');
+    // Background sync to GitHub Pages
+    syncToGitHub(allSkills).catch(() => {});
     closeUpload();
     skills = allSkills;
     window.skillsData = skills;
@@ -495,6 +483,24 @@ async function submitSkill(existingId) {
     alert('保存失败: ' + e.message);
     console.error('[SkillHub] Save error:', e);
   }
+
+async function syncToGitHub(skillsArr) {
+  const ghToken = localStorage.getItem('skillhub_gh_token');
+  if (!ghToken) return;
+  const data = { skills: skillsArr, updatedAt: new Date().toISOString() };
+  const json = JSON.stringify(data, null, 2);
+  const content = btoa(unescape(encodeURIComponent(json)));
+  const api = 'https://api.github.com/repos/' + REPO + '/contents/skills.json';
+  let sha = '';
+  try {
+    const r = await fetch(api + '?ref=main', { headers: { Authorization: 'token ' + ghToken } });
+    if (r.ok) { const d = await r.json(); sha = d.sha; }
+  } catch(e) {}
+  await fetch(api, {
+    method: 'PUT', headers: { Authorization: 'token ' + ghToken, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: 'sync: ' + skillsArr.length + ' skills', content, branch: 'main', sha })
+  });
+}
 }
 
 async function deleteSkill(id) {
