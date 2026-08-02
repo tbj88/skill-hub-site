@@ -537,11 +537,17 @@ async function submitSkill(existingId) {
     skills.unshift(skill);
   }
 
-  // Save to Supabase
+  // Save to Supabase + GitHub
   try {
     await saveSkill(skill);
+    // Also sync to GitHub skills.json (best-effort, don't block)
+    try {
+      const allSkills = existingId ? skills.map(s => s.id === skill.id ? skill : s) : [skill, ...skills];
+      await saveToGitHubJSON(allSkills);
+    } catch(e) { console.warn('[SkillHub] GitHub sync skipped:', e.message); }
     closeUpload();
-    await loadSkills().then(d => { skills = d; window.skillsData = d; });
+    skills = existingId ? skills.map(s => s.id === skill.id ? skill : s) : [skill, ...skills];
+    window.skillsData = skills;
     render();
     if (saveBtn) { saveBtn.disabled = false; saveBtn.textContent = existingId ? '保存修改' : '提交上传'; }
     alert(existingId ? '保存成功！' : '发布成功！');
@@ -550,6 +556,12 @@ async function submitSkill(existingId) {
     alert('保存失败: ' + e.message);
     console.error('[SkillHub] Save error:', e);
   }
+
+async function saveToGitHubJSON(skillsArr) {
+  const data = { skills: skillsArr, updatedAt: new Date().toISOString() };
+  const json = JSON.stringify(data, null, 2);
+  await ghPut('/skills.json', json, 'sync: ' + skillsArr.length + ' skills');
+}
 }
 
 async function deleteSkill(id) {
