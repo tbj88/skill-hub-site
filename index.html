@@ -204,6 +204,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 </footer>
 
 <script>
+const SUPABASE_URL = 'https://vatieapaqsczzuifmjrv.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZhdGllYXBhcXNjenp1aWZtanJ2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU2MTkyNDQsImV4cCI6MjEwMTE5NTI0NH0.DnNCSEK08JL83hCxNSNseqBgEoxRojUq-NruVyZxJME';
 const REPO = 'tbj88/skill-hub-site';
 const BRANCH = 'main';
 const API_BASE = 'https://api.github.com/repos/' + REPO;
@@ -286,19 +288,59 @@ async function ghPutBinary(path, base64Content, message) {
   throw new Error('文件上传失败: 版本冲突，请稍后重试');
 }
 
-// ===== Data =====
+// ===== Supabase Data =====
 async function loadSkills() {
-  const url = './skills.json?t=' + Date.now();
-  const r = await fetch(url, { cache: 'no-store' });
+  const r = await fetch(SUPABASE_URL + '/rest/v1/skills?select=*&order=created_at.desc', {
+    headers: { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY }
+  });
   if (!r.ok) throw new Error('HTTP ' + r.status);
-  const data = await r.json();
-  return Array.isArray(data) ? data : (data.skills || []);
+  const rows = await r.json();
+  return rows.map(r => ({
+    id: r.id, name: r.name, description: r.description, type: r.type,
+    category: r.category, role: r.role, audience: r.audience,
+    tags: JSON.parse(r.tags || '[]'), author: r.author, version: r.version,
+    cert: r.cert, likes: r.likes, downloads: r.downloads,
+    createdAt: r.created_at, content: r.content,
+    fileName: r.file_name, fileSize: r.file_size, fileType: r.file_type,
+    _file: r.file_data, fileUrl: r.file_url, updatedAt: r.updated_at
+  }));
 }
 
-async function saveSkillsToGitHub(skillsArr) {
-  const data = { skills: skillsArr, updatedAt: new Date().toISOString() };
-  const json = JSON.stringify(data, null, 2);
-  await ghPut('/skills.json', json, 'update: ' + skillsArr.length + ' skills');
+async function saveSkill(skill) {
+  const body = {
+    id: skill.id, name: skill.name, description: skill.description,
+    category: skill.category, role: skill.role, audience: skill.audience,
+    tags: JSON.stringify(skill.tags || []), author: skill.author,
+    likes: skill.likes || 0, downloads: skill.downloads || 0,
+    created_at: skill.createdAt, content: skill.content || '',
+    file_name: skill.fileName || '', file_size: skill.fileSize || 0,
+    file_type: skill.fileType || '', file_data: skill._file || '',
+    file_url: skill.fileUrl || '', updated_at: skill.updatedAt || new Date().toISOString().slice(0,10)
+  };
+  const r = await fetch(SUPABASE_URL + '/rest/v1/skills?id=eq.' + encodeURIComponent(skill.id), {
+    method: 'PATCH',
+    headers: { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+    body: JSON.stringify(body)
+  });
+  if (r.status === 404 || r.status === 204) {
+    // Not found, insert
+    const r2 = await fetch(SUPABASE_URL + '/rest/v1/skills', {
+      method: 'POST',
+      headers: { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY, 'Content-Type': 'application/json', 'Prefer': 'return=minimal' },
+      body: JSON.stringify(body)
+    });
+    if (!r2.ok) throw new Error('Insert failed: ' + r2.status);
+  } else if (!r.ok) {
+    throw new Error('Save failed: ' + r.status);
+  }
+}
+
+async function deleteSkillFromDB(id) {
+  const r = await fetch(SUPABASE_URL + '/rest/v1/skills?id=eq.' + encodeURIComponent(id), {
+    method: 'DELETE',
+    headers: { apikey: SUPABASE_KEY, Authorization: 'Bearer ' + SUPABASE_KEY, 'Prefer': 'return=minimal' }
+  });
+  if (!r.ok) throw new Error('Delete failed: ' + r.status);
 }
 
 function genId(name) {
@@ -358,7 +400,7 @@ function render() {
   document.getElementById('filterCount').textContent = '共 ' + filtered.length + ' 个技能';
   document.getElementById('adminBadge').style.display = isAdmin ? 'inline' : 'none';
   document.getElementById('guestBadge').style.display = isGuest ? 'inline' : 'none';
-  document.getElementById('btnUpload').style.display = isAdmin && hasToken() ? 'inline-flex' : 'none';
+  document.getElementById('btnUpload').style.display = isAdmin ? 'inline-flex' : 'none';
   document.getElementById('btnCopyLink').style.display = isAdmin ? 'inline-flex' : 'none';
   document.getElementById('copyLinkRow').style.display = isAdmin ? 'flex' : 'none';
   document.getElementById('clientLinkInput').value = location.origin + location.pathname + '?view=guest&pass=tangbaojuan#/';
@@ -366,37 +408,8 @@ function render() {
   // Status
   const sb = document.getElementById('statusBar');
   if (isGuest) { sb.className = 'status-bar status-ok'; sb.textContent = '对客赋能 · ' + filtered.length + ' 个技能'; }
-  else if (isAdmin && !hasToken()) { sb.className = 'status-bar status-warn'; sb.innerHTML = '&#9888; Token 未配置 — <a href="#" onclick="promptToken();return false" style="color:#92400e;font-weight:600">点此配置</a>'; }
-  else { sb.className = 'status-bar status-ok'; sb.innerHTML = isAdmin ? '&#10003; Token 已配置 · ' + skills.length + ' 个技能' : '共 ' + filtered.length + ' 个技能'; }
-
-  buildSidebar();
-
-  const grid = document.getElementById('skillGrid');
-  if (!filtered.length) { grid.innerHTML = '<div class="empty"><div style="font-size:40px">&#128269;</div><p>没有找到技能</p></div>'; return; }
-
-  grid.innerHTML = filtered.map(s => {
-    const sizeStr = s.fileSize ? (s.fileSize > 1024 ? (s.fileSize/1024).toFixed(1)+' KB' : s.fileSize+' B') : '';
-    return `<div class="card" onclick="openDetail('${esc(s.id)}')">
-      <div class="card-title">${esc(s.name||'Unnamed')}</div>
-      <div class="card-tags">
-        ${s.audience==='对客赋能'?'<span class="tag tag-guest">对客赋能</span>':'<span class="tag tag-internal">对内提效</span>'}
-        ${s.category?`<span class="tag tag-cat">${esc(s.category)}</span>`:''}
-      </div>
-      <div class="card-desc">${esc(s.description||'')}</div>
-      <div class="card-bottom">
-        <div class="card-bottom-left">
-          <span>&#128100; ${esc(s.author||'')}</span>
-          ${sizeStr?`<span>${sizeStr}</span>`:''}
-          <span>${s.createdAt||''}</span>
-        </div>
-        <div class="card-bottom-right">
-          <span>&#128077; ${s.likes||0}</span>
-          ${hasDownload(s)?`<button class="btn-dl" onclick="downloadSkill(event,window.skillsData.find(x=>x.id==='${esc(s.id)}'))">&#11015; 下载</button>`:''}
-        </div>
-      </div>
-    </div>`;
-  }).join('');
-}
+  else if (isAdmin) { sb.className = 'status-bar status-ok'; sb.textContent = '管理员模式 · ' + filtered.length + ' 个技能'; }
+  else { sb.className = 'status-bar status-ok'; sb.textContent = '共 ' + filtered.length + ' 个技能'; }
 
 // ===== Detail Modal =====
 function openDetail(id) {
@@ -417,7 +430,7 @@ function openDetail(id) {
     ${content?`<h3>技能内容</h3><div class="modal-content">${content.slice(0,8000)}${content.length>8000?'...':''}</div>`:''}
     <div class="modal-actions">
       ${hasDownload(s)?`<button class="btn btn-brand" onclick="downloadSkill(event,window.skillsData.find(x=>x.id==='${esc(s.id)}'))">&#11015; 下载技能包</button>`:''}
-      ${isAdmin&&hasToken()?`<button class="btn btn-outline" onclick="openEdit('${esc(s.id)}')">&#9998; 编辑</button><button class="btn btn-red" onclick="deleteSkill('${esc(s.id)}')">&#128465; 删除</button>`:''}
+      ${isAdmin?`<button class="btn btn-outline" onclick="openEdit('${esc(s.id)}')">&#9998; 编辑</button><button class="btn btn-red" onclick="deleteSkill('${esc(s.id)}')">&#128465; 删除</button>`:''}
       <button class="btn btn-ghost" onclick="closeDetail()">关闭</button>
     </div>`;
   const dm = document.getElementById('detailModal');
@@ -454,12 +467,9 @@ function openEdit(id) { closeDetail(); openUpload(id); }
 function closeUpload() { const m = document.getElementById('uploadModal'); m.classList.remove('open'); m.style.display = 'none'; }
 
 async function submitSkill(existingId) {
-  if (!hasToken()) { alert('请先配置 GitHub Token'); return; }
-
   const name = document.getElementById('fName').value.trim();
   if (!name) { alert('技能名称不能为空'); return; }
 
-  // Disable button during save
   const saveBtn = document.querySelector('#uploadBody .btn-brand');
   if (saveBtn) { saveBtn.disabled = true; saveBtn.textContent = '保存中...'; }
 
@@ -512,9 +522,9 @@ async function submitSkill(existingId) {
     skills.unshift(skill);
   }
 
-  // Save via GitHub API (single commit, inline files)
+  // Save to Supabase
   try {
-    await saveSkillsToGitHub(skills);
+    await saveSkill(skill);
     closeUpload();
     await loadSkills().then(d => { skills = d; window.skillsData = d; });
     render();
@@ -528,12 +538,9 @@ async function submitSkill(existingId) {
 }
 
 async function deleteSkill(id) {
-  if (!hasToken()) { showToast('请先配置 GitHub Token'); return; }
   if (!confirm('确定删除这个技能吗？此操作不可撤销。')) return;
-
-  skills = skills.filter(s => s.id !== id);
   try {
-    await saveSkillsToGitHub(skills);
+    await deleteSkillFromDB(id);
     closeDetail();
     await loadSkills().then(d => { skills = d; window.skillsData = d; });
     render();
@@ -541,6 +548,7 @@ async function deleteSkill(id) {
   } catch(e) {
     alert('删除失败: ' + e.message);
   }
+}
 }
 
 function showAll() {
