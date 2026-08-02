@@ -515,7 +515,7 @@ async function submitSkill(existingId) {
   // Save via local git server (no SHA conflicts)
   try {
     const payload = { skills, token: getToken(), updatedAt: new Date().toISOString() };
-    const r = await fetch('http://localhost:8766', {
+    const r = await fetch('/save', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
@@ -540,7 +540,7 @@ async function deleteSkill(id) {
   skills = skills.filter(s => s.id !== id);
   try {
     const payload = { skills, token: getToken(), updatedAt: new Date().toISOString() };
-    const r = await fetch('http://localhost:8766', {
+    const r = await fetch('/save', {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
     });
